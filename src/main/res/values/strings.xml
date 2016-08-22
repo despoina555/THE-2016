@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Myfirstapp</string>
+    <string name="edit_message">Enter a message</string>
+    <string name="button_send">Send</string>
+    <string name="action_settings">Action Settings</string>
+    <string name="title_activity_display_message">My Message</string>
+    <string name="button_search">Search</string>
+    <string name="title_activity_display_results">My Results</string>
+    <string name="mylist">My List</string>
+    <string name="viewproducts">View Products</string>
+    <string name="settings">Settings</string>
+</resources>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/mylist"
+          android:icon="@drawable/cart"
+          android:title="@string/mylist"
+          app:showAsAction="ifRoom"/>
+    <item android:id="@+id/allprod"
+          android:icon="@drawable/box"
+          android:title="@string/viewproducts" 
+          app:showAsAction="ifRoom"/>
+    <item android:id="@+id/settings"
+          android:icon="@drawable/settings"
+          android:title="@string/settings" />
+</menu>
