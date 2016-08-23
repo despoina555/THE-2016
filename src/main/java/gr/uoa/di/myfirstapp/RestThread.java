@@ -79,7 +79,7 @@ JSON string.********/
             JSONArray jsonMainNode = new JSONArray(result);
 // get the name attribute of the first element in the array
            jsonResponse =((JSONObject)jsonMainNode.get(0));
-           msg = jsonResponse.getString("name");
+           msg = jsonResponse.getString("prodname");
         }
         catch(JSONException ex){
             Log.e("gr.uoa.hello","",ex);

@@ -32,7 +32,14 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="gr.uoa.di.myfirstapp.MyActivity" />
         </activity>
-
+        <activity
+            android:name="gr.uoa.di.myfirstapp.ListActivity"
+            android:label="@string/title_list_display"
+            android:parentActivityName="gr.uoa.di.myfirstapp.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="gr.uoa.di.myfirstapp.MyActivity" />
+        </activity>
     </application>
 
 </manifest>

@@ -10,5 +10,15 @@ import java.util.ArrayList;
  * @author mark9
  */
 class Shoppinglist {
-    ArrayList<Products> myprod;
+    private ArrayList<Products> myprod = new ArrayList<>();
+
+    public ArrayList<Products> getMyprod() {
+        return myprod;
+    }
+
+    public void setMyprod(ArrayList<Products> myprod) {
+        this.myprod = myprod;
+    }
+    
+    
 }
