@@ -63,7 +63,7 @@ public class MyActivity extends AppCompatActivity {
     // Handle item selection
     switch (item.getItemId()) {
         case R.id.mylist:
-            Intent intent = new Intent(this, ListActivity.class);
+            Intent intent = new Intent(this, MyListActivity.class);
             startActivity(intent);
             return true;
         case R.id.allprod:
