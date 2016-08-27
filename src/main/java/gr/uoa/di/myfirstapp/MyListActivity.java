@@ -37,14 +37,14 @@ public class MyListActivity extends AppCompatActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.activity_list_display);
-        String mylist = readListFile();
-        if (mylist!=null){
-            String items[] = mylist.split(" ");
+        //String mylist = readListFile();
+        //if (mylist!=null){
+           // String items[] = mylist.split(" ");
             CustomListAdapter adapter = new CustomListAdapter(this);
             ListView listView = (ListView) findViewById(R.id.mobile_list);
             listView.setAdapter(adapter);
             LoadListRest llr = new LoadListRest(this, adapter);
-            llr.execute("http://192.168.1.2:8080/ListDB/webresources/entities.product/bubbles");
+            llr.execute("http://192.168.1.7:8080/ListDB/webresources/entities.product/bubbles");
             //ArrayList<String> al = new ArrayList<>();
             //String itemname;
             //for(int i=0 ; i<items.length ; i++){
@@ -63,14 +63,14 @@ public class MyListActivity extends AppCompatActivity {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.row_list_item, al);
             ListView listView = (ListView) findViewById(R.id.mobile_list);
             listView.setAdapter(adapter);*/
-        }
+       /* }
         else{
             LinearLayout layout = (LinearLayout) findViewById(R.id.linearlist);
             TextView textView = new TextView(this);
             textView.setTextSize(40);
             textView.setText("Your list is empty");
             layout.addView(textView);
-        } 
+        } */
     }
 
     private String readListFile() {

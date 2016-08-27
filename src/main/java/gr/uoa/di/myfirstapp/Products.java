@@ -14,8 +14,8 @@ public class Products {
     private int prodid;
     private int prodnum;
     private String prodname;
-    private int sellerid;
-    private float prodprice;
+    private ArrayList<Integer> sellerid = new ArrayList<>();
+    private ArrayList<Float> prodprice = new ArrayList<>();
 
     public int getProdid() {
         return prodid;
@@ -41,21 +41,20 @@ public class Products {
         this.prodname = prodname;
     }
 
-    public int getSellerid() {
+    public ArrayList<Integer> getSellerid() {
         return sellerid;
     }
 
-    public void setSellerid(int sellerid) {
+    public void setSellerid(ArrayList<Integer> sellerid) {
         this.sellerid = sellerid;
     }
 
-    public float getProdprice() {
+    public ArrayList<Float> getProdprice() {
         return prodprice;
     }
 
-    public void setProdprice(float prodprice) {
+    public void setProdprice(ArrayList<Float> prodprice) {
         this.prodprice = prodprice;
     }
-    
 
 }

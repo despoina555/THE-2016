@@ -73,20 +73,43 @@ public class LoadListRest extends AsyncTask <String,Void,String>{
     
     protected void onPostExecute(String result) {
         ArrayList<Products> alpd= new ArrayList<Products>();
-        Products pd;
+        Products pd = null;
         JSONObject jsonResponse;
         String res = "Restmessage: "+result;
+        ArrayList<Integer> temppdsel;
+        ArrayList<Float> temppdprice;
         int myid = 0;
         try {
             JSONArray jsonMainNode = new JSONArray(result);
-            for(int i=0 ; i<jsonMainNode.length() ; i++){
-                jsonResponse =((JSONObject)jsonMainNode.get(i));
-                if(Integer.valueOf(jsonResponse.getString("prodnum")) == 1){
-                    pd = new Products();
-                    pd.setProdname(jsonResponse.getString("prodname"));
-                    pd.setProdprice(Float.valueOf(jsonResponse.getString("prodprice")));
-                    alpd.add(pd);
-                    //res = jsonResponse.getString("prodprice");
+            for(int j=1 ; j<5 ; j++){
+                for(int i=0 ; i<jsonMainNode.length() ; i++){
+                    jsonResponse =((JSONObject)jsonMainNode.get(i));
+                    if(Integer.valueOf(jsonResponse.getString("prodnum")) == j){
+                        if((pd!=null) && (pd.getProdnum()== Integer.valueOf(jsonResponse.getString("prodnum")))){
+                            pd = alpd.remove(alpd.size()-1);
+                            temppdsel = pd.getSellerid();
+                            temppdprice = pd.getProdprice();
+                            temppdsel.add(Integer.valueOf(jsonResponse.getString("sellerid")));
+                            temppdprice.add(Float.valueOf(jsonResponse.getString("prodprice")));
+                            pd.setProdprice(temppdprice);
+                            pd.setSellerid(temppdsel);
+                            alpd.add(pd);
+                        }
+                        else{
+                            pd = new Products();
+                            pd.setProdname(jsonResponse.getString("prodname"));
+                            pd.setProdid(Integer.valueOf(jsonResponse.getString("prodid")));
+                            pd.setProdnum(Integer.valueOf(jsonResponse.getString("prodnum")));
+                            temppdsel=pd.getSellerid();
+                            temppdprice = pd.getProdprice();
+                            temppdsel.add(Integer.valueOf(jsonResponse.getString("sellerid")));
+                            pd.setSellerid(temppdsel);
+                            temppdprice.add(Float.valueOf(jsonResponse.getString("prodprice")));
+                            pd.setProdprice(temppdprice);
+                            alpd.add(pd);
+                            //res = jsonResponse.getString("prodprice");
+                        }
+                    }
                 }
             }
         } catch (JSONException ex) {

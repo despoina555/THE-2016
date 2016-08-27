@@ -47,6 +47,8 @@ public class CustomListAdapter extends BaseAdapter{
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View itemView;
+        ArrayList<Float> showprice;
+        Float tempprice;
         /*if (convertView == null){
             itemView = (RelativeLayout) mLayoutInflater.inflate(R.layout.activity_list_display, parent, false);
         }
@@ -58,8 +60,15 @@ public class CustomListAdapter extends BaseAdapter{
        TextView pricet = (TextView) itemView.findViewById(R.id.listPrice);
        String title = mProducts.get(position).getProdname();
        titlet.setText(title);
-       String price = String.valueOf(mProducts.get(position).getProdprice());
-       pricet.setText(price);
+       showprice = mProducts.get(position).getProdprice();
+       tempprice = showprice.get(0);
+       for(int i=1 ; i<showprice.size() ; i++){
+           if(showprice.get(i) < tempprice){
+               tempprice = showprice.get(i);
+           }
+       }
+       String price = String.valueOf(tempprice);
+       pricet.setText("Lowest price found: E" + price);
        return itemView;
     }
     

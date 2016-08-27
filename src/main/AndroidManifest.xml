@@ -34,7 +34,7 @@
                 android:value="gr.uoa.di.myfirstapp.MyActivity" />
         </activity>
         <activity
-            android:name="gr.uoa.di.myfirstapp.ListActivity"
+            android:name="gr.uoa.di.myfirstapp.MyListActivity"
             android:label="@string/title_list_display"
             android:parentActivityName="gr.uoa.di.myfirstapp.MyActivity" >
             <meta-data
