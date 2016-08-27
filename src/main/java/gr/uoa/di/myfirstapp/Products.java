@@ -9,34 +9,53 @@ import java.util.ArrayList;
  *
  * @author mark9
  */
-class Products {
+public class Products {
 // Fields are not correct yet
-    private int pprice;
-    private String pname;
-    private ArrayList<Sellers> psellers;
+    private int prodid;
+    private int prodnum;
+    private String prodname;
+    private int sellerid;
+    private float prodprice;
+
+    public int getProdid() {
+        return prodid;
+    }
+
+    public void setProdid(int prodid) {
+        this.prodid = prodid;
+    }
+
+    public int getProdnum() {
+        return prodnum;
+    }
+
+    public void setProdnum(int prodnum) {
+        this.prodnum = prodnum;
+    }
+
+    public String getProdname() {
+        return prodname;
+    }
+
+    public void setProdname(String prodname) {
+        this.prodname = prodname;
+    }
+
+    public int getSellerid() {
+        return sellerid;
+    }
+
+    public void setSellerid(int sellerid) {
+        this.sellerid = sellerid;
+    }
+
+    public float getProdprice() {
+        return prodprice;
+    }
+
+    public void setProdprice(float prodprice) {
+        this.prodprice = prodprice;
+    }
     
-    public int getPprice() {
-        return pprice;
-    }
-
-    public void setPprice(int pprice) {
-        this.pprice = pprice;
-    }
-
-    public String getPname() {
-        return pname;
-    }
-
-    public void setPname(String pname) {
-        this.pname = pname;
-    }
-
-    public ArrayList<Sellers> getPsellers() {
-        return psellers;
-    }
-
-    public void setPsellers(ArrayList<Sellers> psellers) {
-        this.psellers = psellers;
-    }
 
 }

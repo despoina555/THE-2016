@@ -27,7 +27,7 @@ import org.json.JSONObject;
  *
  * @author mark9
  */
-public class ListActivity extends AppCompatActivity {
+public class MyListActivity extends AppCompatActivity {
 
     private String file = "mylist.txt";
     /**
@@ -40,10 +40,15 @@ public class ListActivity extends AppCompatActivity {
         String mylist = readListFile();
         if (mylist!=null){
             String items[] = mylist.split(" ");
-            ArrayList<String> al = new ArrayList<>();
-            String itemname;
+            CustomListAdapter adapter = new CustomListAdapter(this);
+            ListView listView = (ListView) findViewById(R.id.mobile_list);
+            listView.setAdapter(adapter);
+            LoadListRest llr = new LoadListRest(this, adapter);
+            llr.execute("http://192.168.1.2:8080/ListDB/webresources/entities.product/bubbles");
+            //ArrayList<String> al = new ArrayList<>();
+            //String itemname;
             //for(int i=0 ; i<items.length ; i++){
-                new RestThread(this).execute("http://192.168.1.2:8080/ListDB/webresources/entities.product/bubbles");
+              //  new RestThread(this).execute("http://192.168.1.2:8080/ListDB/webresources/entities.product/bubbles");
         /*Intent resultIntent= new Intent(this, DisplayResults.class);
         resultIntent.putExtra(MyActivity.RESULT_MESSAGE, itemname);
         this.startActivity(resultIntent);                
