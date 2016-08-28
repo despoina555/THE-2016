@@ -38,11 +38,10 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/button_search"
-    android:onClick="searchMessage"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/button" />
+    android:layout_centerVertical="true"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentStart="true"
+    android:id="@+id/button" />
 
 
 </RelativeLayout>
