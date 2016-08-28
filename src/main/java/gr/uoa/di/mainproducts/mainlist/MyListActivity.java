@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package mainlist;
+package gr.uoa.di.mainproducts.mainlist;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

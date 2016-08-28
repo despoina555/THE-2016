@@ -1,7 +1,7 @@
 /*
 * This is a class to handle sellers for a product
 */
-package modelproducts;
+package gr.uoa.di.modelproducts;
 
 import java.util.ArrayList;
 

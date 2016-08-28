@@ -5,9 +5,9 @@
  */
 package gr.uoa.di.mainproducts;
 
-import modelproducts.Shoppinglist;
-import modelproducts.Sellers;
-import modelproducts.Products;
+import gr.uoa.di.modelproducts.Shoppinglist;
+import gr.uoa.di.modelproducts.Sellers;
+import gr.uoa.di.modelproducts.Products;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;

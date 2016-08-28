@@ -5,7 +5,7 @@
  */
 package gr.uoa.di.mainproducts;
 
-import modelproducts.Products;
+import gr.uoa.di.modelproducts.Products;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

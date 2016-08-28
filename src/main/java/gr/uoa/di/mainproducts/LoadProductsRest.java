@@ -5,7 +5,7 @@
  */
 package gr.uoa.di.mainproducts;
 
-import modelproducts.Products;
+import gr.uoa.di.modelproducts.Products;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;

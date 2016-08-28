@@ -1,9 +1,9 @@
 /*
  * This will be a class to handle the list the user makes
  */
-package modelproducts;
+package gr.uoa.di.modelproducts;
 
-import modelproducts.Products;
+import gr.uoa.di.modelproducts.Products;
 import java.util.ArrayList;
 
 /**
