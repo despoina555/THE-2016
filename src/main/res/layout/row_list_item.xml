@@ -21,5 +21,15 @@
           android:maxLines="4"
           android:text="The List item description"
           android:textSize="14sp" />
+       
+        <TextView
+          android:id="@+id/clickmsg"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/listPrice"
+          android:layout_marginTop="5dp"
+          android:maxLines="4"
+          android:text="Click product to add it to your list"
+          android:textSize="11sp" />      
  
 </RelativeLayout>

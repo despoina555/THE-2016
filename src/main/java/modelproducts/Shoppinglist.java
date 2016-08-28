@@ -1,15 +1,16 @@
 /*
  * This will be a class to handle the list the user makes
  */
-package gr.uoa.di.myfirstapp;
+package modelproducts;
 
+import modelproducts.Products;
 import java.util.ArrayList;
 
 /**
  *
  * @author mark9
  */
-class Shoppinglist {
+public class Shoppinglist {
     private ArrayList<Products> myprod = new ArrayList<>();
 
     public ArrayList<Products> getMyprod() {

@@ -1,18 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/activity_show_products"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".mainproducts.ShowProductsActivity">
 
-
-
-    <TextView
-        android:paddingTop="20px"
-        android:textStyle="bold"
-        android:textSize="20dp"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="Products:: " />
-
-
+   <ListView
+      android:id="@+id/show_products_list"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" >
+   </ListView>
+   
 </LinearLayout>

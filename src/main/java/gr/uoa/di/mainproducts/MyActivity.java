@@ -1,5 +1,6 @@
-package gr.uoa.di.myfirstapp;
+package gr.uoa.di.mainproducts;
 
+import mainlist.MyListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import gr.uoa.di.R;
 
 public class MyActivity extends AppCompatActivity {
 
@@ -47,7 +49,7 @@ public class MyActivity extends AppCompatActivity {
     }
 
     public void sendMessage(View view) {
-        Intent intent = new Intent(this, SearchProductsActivity.class);
+        Intent intent = new Intent(this, ShowProductsActivity.class);
         startActivity(intent);
     }
     
@@ -69,7 +71,8 @@ public class MyActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         case R.id.allprod:
-            new RestThread(this).execute("http://192.168.1.2:8080/CustomerDB/webresources/entities.customer/bubbles");
+            intent = new Intent(this, ShowProductsActivity.class);
+            startActivity(intent);
             return true;
         case R.id.settings:
             return true;

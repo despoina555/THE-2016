@@ -1,7 +1,7 @@
 <resources>
-    <string name="app_name">Myfirstapp</string>
+    <string name="app_name">NoodlesMap</string>
     <string name="edit_message">Enter a message</string>
-    <string name="button_send">Send</string>
+    <string name="button_send">Show all the products</string>
     <string name="action_settings">Action Settings</string>
     <string name="title_activity_display_message">My Message</string>
     <string name="button_search">Search</string>

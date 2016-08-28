@@ -1,7 +1,7 @@
 /*
 * This is a class to handle sellers for a product
 */
-package gr.uoa.di.myfirstapp;
+package modelproducts;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
  * @author mark9
  */
 
-class Sellers {
+public class Sellers {
     
     private int id;
     private String name;

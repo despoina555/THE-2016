@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="gr.uoa.di.myfirstapp">
+    package="gr.uoa.di">
     <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <activity android:name=".MyActivity">
+        <activity android:name=".mainproducts.MyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -18,33 +18,23 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="gr.uoa.di.myfirstapp.DisplayMessageActivity"
-            android:label="@string/title_activity_display_message"
-            android:parentActivityName="gr.uoa.di.myfirstapp.MyActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="gr.uoa.di.myfirstapp.MyActivity" />
-        </activity>
-        <activity
-            android:name="gr.uoa.di.myfirstapp.DisplayResults"
+            android:name=".mainproducts.DisplayResults"
             android:label="@string/title_activity_display_results"
-            android:parentActivityName="gr.uoa.di.myfirstapp.MyActivity" >
+            android:parentActivityName=".mainproducts.MyActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="gr.uoa.di.myfirstapp.MyActivity" />
+                android:value=".mainproducts.MyActivity" />
         </activity>
         <activity
-            android:name="gr.uoa.di.myfirstapp.MyListActivity"
+            android:name=".mainlist.MyListActivity"
             android:label="@string/title_list_display"
-            android:parentActivityName="gr.uoa.di.myfirstapp.MyActivity" >
+            android:parentActivityName=".mainproducts.MyActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="gr.uoa.di.myfirstapp.MyActivity" />
+                android:value=".mainproducts.MyActivity" />
         </activity>
 
-        <activity android:name=".SearchProductsActivity"></activity>
-
-        <activity android:name=".ShowProductsActivity"/>
+        <activity android:name=".mainproducts.ShowProductsActivity"/>
 
 
     </application>

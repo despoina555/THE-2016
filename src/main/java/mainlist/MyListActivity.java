@@ -3,25 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.uoa.di.myfirstapp;
+package mainlist;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import gr.uoa.di.mainproducts.CustomProductsAdapter;
+import gr.uoa.di.mainproducts.LoadProductsRest;
 import java.io.FileInputStream;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import gr.uoa.di.R;
 
 /**
  *
@@ -40,11 +31,11 @@ public class MyListActivity extends AppCompatActivity {
         //String mylist = readListFile();
         //if (mylist!=null){
            // String items[] = mylist.split(" ");
-            CustomListAdapter adapter = new CustomListAdapter(this);
+            CustomProductsAdapter adapter = new CustomProductsAdapter(this);
             ListView listView = (ListView) findViewById(R.id.mobile_list);
             listView.setAdapter(adapter);
-            LoadListRest llr = new LoadListRest(this, adapter);
-            llr.execute("http://192.168.1.7:8080/ListDB/webresources/entities.product/bubbles");
+            LoadProductsRest llr = new LoadProductsRest(this, adapter);
+            llr.execute("http://192.168.1.9:8080/ListDB/webresources/entities.product/bubbles");
             //ArrayList<String> al = new ArrayList<>();
             //String itemname;
             //for(int i=0 ; i<items.length ; i++){

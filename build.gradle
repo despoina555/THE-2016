@@ -12,7 +12,7 @@ android {
     compileSdkVersion 24
     buildToolsVersion "24.0.0"
     defaultConfig {
-        applicationId "gr.uoa.di.myfirstapp"
+        applicationId "gr.uoa.di"
         minSdkVersion 15
         targetSdkVersion 24
         versionCode 1

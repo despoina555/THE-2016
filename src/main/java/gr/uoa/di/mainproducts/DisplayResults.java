@@ -3,14 +3,17 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.uoa.di.myfirstapp;
+package gr.uoa.di.mainproducts;
 
-import android.app.Activity;
+import modelproducts.Shoppinglist;
+import modelproducts.Sellers;
+import modelproducts.Products;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import gr.uoa.di.R;
 
 /**
  *

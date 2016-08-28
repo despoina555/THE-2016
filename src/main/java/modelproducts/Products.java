@@ -1,7 +1,7 @@
 /*
  * This is the default product
  */
-package gr.uoa.di.myfirstapp;
+package modelproducts;
 
 import java.util.ArrayList;
 

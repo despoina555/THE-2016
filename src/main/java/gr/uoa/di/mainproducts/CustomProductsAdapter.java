@@ -3,28 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.uoa.di.myfirstapp;
+package gr.uoa.di.mainproducts;
 
+import modelproducts.Products;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import java.util.ArrayList;
-import java.util.zip.Inflater;
+import gr.uoa.di.R;
 
 /**
  *
  * @author mark9
  */
-public class CustomListAdapter extends BaseAdapter{
+public class CustomProductsAdapter extends BaseAdapter{
     private Context mContext;
     private LayoutInflater mLayoutInflater;
     private ArrayList<Products> mProducts = new ArrayList<Products>();
     
-    public CustomListAdapter(Context context){
+    public CustomProductsAdapter(Context context){
         mContext = context;
         mLayoutInflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }

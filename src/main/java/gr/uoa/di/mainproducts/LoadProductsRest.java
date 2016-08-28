@@ -3,13 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gr.uoa.di.myfirstapp;
+package gr.uoa.di.mainproducts;
 
+import modelproducts.Products;
 import android.app.Activity;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
-import com.google.gson.Gson;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -17,22 +16,20 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import gr.uoa.di.R;
 
 /**
  *
  * @author mark9
  */
-public class LoadListRest extends AsyncTask <String,Void,String>{
+public class LoadProductsRest extends AsyncTask <String,Void,String>{
     private final Activity parent;
-    private final CustomListAdapter mAdapter;
-    private String file = "mylist.txt";
+    private final CustomProductsAdapter mAdapter;
     
-    public LoadListRest(Activity parent, CustomListAdapter adapter){
+    public LoadProductsRest(Activity parent, CustomProductsAdapter adapter){
         this.parent=parent;
         this.mAdapter = adapter;
     }
@@ -107,7 +104,6 @@ public class LoadListRest extends AsyncTask <String,Void,String>{
                             temppdprice.add(Float.valueOf(jsonResponse.getString("prodprice")));
                             pd.setProdprice(temppdprice);
                             alpd.add(pd);
-                            //res = jsonResponse.getString("prodprice");
                         }
                     }
                 }
@@ -116,16 +112,5 @@ public class LoadListRest extends AsyncTask <String,Void,String>{
             Log.e("gr.uoa.hello","",ex);
         }
         mAdapter.upDateEntries(alpd);
-        //Intent resultIntent= new Intent(parent, DisplayResults.class);
-        /*String msg;
-        if (alpd.size() != 0){
-            msg = alpd.get(0).getProdname();
-        }
-        else{
-            msg = "NO SHIT SHERLOCK";
-        }*/
-        //res = alpd.get(1).getProdname();
-        //resultIntent.putExtra(MyActivity.RESULT_MESSAGE, res);
-        //parent.startActivity(resultIntent); 
     }
 }
