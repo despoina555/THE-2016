@@ -1,6 +1,6 @@
 package gr.uoa.di.mainproducts;
 
-import gr.uoa.di.mainproducts.mainlist.MyListActivity;
+import gr.uoa.di.mainlist.MyListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
