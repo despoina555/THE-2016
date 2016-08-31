@@ -7,13 +7,22 @@ package gr.uoa.di.mainproducts;
 
 import gr.uoa.di.modelproducts.Products;
 import android.content.Context;
+import static android.content.Context.MODE_APPEND;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 import java.util.ArrayList;
 import gr.uoa.di.R;
+import gr.uoa.di.modelproducts.ShoppingList;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -45,7 +54,7 @@ public class CustomProductsAdapter extends BaseAdapter{
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         View itemView;
         ArrayList<Float> showprice;
         Float tempprice;
@@ -58,6 +67,7 @@ public class CustomProductsAdapter extends BaseAdapter{
        itemView = mLayoutInflater.inflate(R.layout.row_list_item, null);
        TextView titlet = (TextView) itemView.findViewById(R.id.listTitle);
        TextView pricet = (TextView) itemView.findViewById(R.id.listPrice);
+       Button addlist = (Button) itemView.findViewById(R.id.addlist);
        String title = mProducts.get(position).getProdname();
        titlet.setText(title);
        showprice = mProducts.get(position).getProdprice();
@@ -69,6 +79,18 @@ public class CustomProductsAdapter extends BaseAdapter{
        }
        String price = String.valueOf(tempprice);
        pricet.setText("Lowest price found: E" + price);
+       addlist.setOnClickListener(new OnClickListener() {            
+            @Override
+            public void onClick(View v) {
+                ShoppingList shl = new ShoppingList();
+                if(shl.writetofile(String.valueOf(mProducts.get(position).getProdnum()), mContext) == true){
+                    Toast.makeText(mContext, mProducts.get(position).getProdname() + " has been added to list.", Toast.LENGTH_LONG).show();
+                }
+                else{
+                    Toast.makeText(mContext, "Product already on the list.", Toast.LENGTH_LONG).show();
+                }
+            }
+        }); 
        return itemView;
     }
     

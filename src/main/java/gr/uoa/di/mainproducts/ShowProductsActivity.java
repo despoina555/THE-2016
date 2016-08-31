@@ -18,12 +18,11 @@ public class ShowProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_products);
 
-        
         CustomProductsAdapter adapter = new CustomProductsAdapter(this);
         ListView listView = (ListView) findViewById(R.id.show_products_list);
         listView.setAdapter(adapter);
-        LoadProductsRest llr = new LoadProductsRest(this, adapter);
-        llr.execute("http://192.168.1.9:8080/ListDB/webresources/entities.product/bubbles");
+        LoadProductsRest lpr = new LoadProductsRest(this, adapter);
+        lpr.execute("http://192.168.1.6:8080/ListDB/webresources/entities.product/bubbles");
         
     }
 

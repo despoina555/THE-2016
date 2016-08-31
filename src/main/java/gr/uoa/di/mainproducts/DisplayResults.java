@@ -5,7 +5,7 @@
  */
 package gr.uoa.di.mainproducts;
 
-import gr.uoa.di.modelproducts.Shoppinglist;
+import gr.uoa.di.modelproducts.ShoppingList;
 import gr.uoa.di.modelproducts.Sellers;
 import gr.uoa.di.modelproducts.Products;
 import android.content.Intent;
@@ -36,7 +36,7 @@ public class DisplayResults extends AppCompatActivity {
         textView.setText(message);
         Products prod;
         Sellers sel;
-        Shoppinglist shl;
+        ShoppingList shl;
 
         RelativeLayout layout = (RelativeLayout) findViewById(R.id.rescont);
         layout.addView(textView);     

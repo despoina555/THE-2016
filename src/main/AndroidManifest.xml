@@ -33,7 +33,13 @@
                 android:value=".mainproducts.MyActivity" />
         </activity>
 
-        <activity android:name=".mainproducts.ShowProductsActivity"/>
+        <activity android:name=".mainproducts.ShowProductsActivity"
+            android:label="@string/title_show_prods"
+            android:parentActivityName=".mainproducts.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".mainproducts.MyActivity" />
+        </activity>
 
 
     </application>
