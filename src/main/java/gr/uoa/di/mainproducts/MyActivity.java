@@ -1,5 +1,6 @@
 package gr.uoa.di.mainproducts;
 
+import gr.uoa.di.google.maps.MapsActivity;
 import gr.uoa.di.mainlist.MyListActivity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -46,6 +47,8 @@ public class MyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
+        //ask permition to see users loc
+
     }
 
     public void sendMessage(View view) {
@@ -75,6 +78,10 @@ public class MyActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         case R.id.settings:
+            return true;
+        case R.id.maps:
+            Intent intentMap = new Intent(this, MapsActivity.class);
+            startActivity(intentMap);
             return true;
         default:
             return super.onOptionsItemSelected(item);

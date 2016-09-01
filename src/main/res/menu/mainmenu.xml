@@ -12,4 +12,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/settings"
           android:icon="@drawable/settings"
           android:title="@string/settings" />
+    <item android:id="@+id/maps"
+        android:icon="@drawable/settings"
+        android:title="@string/maps" />
 </menu>

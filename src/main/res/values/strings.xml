@@ -10,4 +10,7 @@
     <string name="viewproducts">View Products</string>
     <string name="settings">Settings</string>
     <string name="title_list_display">My List</string>
+    <string name="title_activity_seller_info_maps">Map</string>
+    <string name="maps">MapsForDedduging</string>
+    <string name="title_activity_maps">Seller\'s Info</string>
 </resources>
