@@ -20,6 +20,7 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import gr.uoa.di.R;
+import gr.uoa.di.modelproducts.ShoppingList;
 
 /**
  *
@@ -28,6 +29,7 @@ import gr.uoa.di.R;
 class LoadListRest extends AsyncTask <String,Void,String>{
     private final Activity parent;
     private final CustomListAdapter mAdapter;
+    private String file = "mylist.txt";
     
     public LoadListRest(Activity parent, CustomListAdapter adapter){
         this.parent=parent;
@@ -75,13 +77,15 @@ class LoadListRest extends AsyncTask <String,Void,String>{
         String res = "Restmessage: "+result;
         ArrayList<Integer> temppdsel;
         ArrayList<Float> temppdprice;
-        int myid = 0;
+        ShoppingList shl = new ShoppingList();
+        ArrayList<String> templ;
+        templ = shl.readfromfile(parent);
         try {
             JSONArray jsonMainNode = new JSONArray(result);
-            for(int j=1 ; j<5 ; j++){
+            for(int j=1 ; j<=templ.size() ; j++){
                 for(int i=0 ; i<jsonMainNode.length() ; i++){
                     jsonResponse =((JSONObject)jsonMainNode.get(i));
-                    if(Integer.valueOf(jsonResponse.getString("prodnum")) == j){
+                    if(Integer.valueOf(jsonResponse.getString("prodnum")) == Integer.valueOf(templ.get(j-1))){
                         if((pd!=null) && (pd.getProdnum()== Integer.valueOf(jsonResponse.getString("prodnum")))){
                             pd = alpd.remove(alpd.size()-1);
                             temppdsel = pd.getSellerid();

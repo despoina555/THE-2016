@@ -78,7 +78,13 @@ public class LoadProductsRest extends AsyncTask <String,Void,String>{
         int myid = 0;
         try {
             JSONArray jsonMainNode = new JSONArray(result);
-            for(int j=1 ; j<5 ; j++){
+            for(int k=0 ; k<jsonMainNode.length() ; k++){
+                jsonResponse = ((JSONObject) jsonMainNode.get(k));
+                if((Integer.valueOf(jsonResponse.getString("prodnum"))) > myid){
+                    myid = (Integer.valueOf(jsonResponse.getString("prodnum")));
+                }
+            }
+            for(int j=1 ; j<=myid ; j++){
                 for(int i=0 ; i<jsonMainNode.length() ; i++){
                     jsonResponse =((JSONObject)jsonMainNode.get(i));
                     if(Integer.valueOf(jsonResponse.getString("prodnum")) == j){

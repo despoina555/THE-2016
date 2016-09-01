@@ -10,6 +10,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -20,6 +23,7 @@ import java.io.FileInputStream;
 import gr.uoa.di.R;
 import gr.uoa.di.mainproducts.DisplayResults;
 import gr.uoa.di.mainproducts.MyActivity;
+import gr.uoa.di.mainproducts.ShowProductsActivity;
 import gr.uoa.di.modelproducts.ShoppingList;
 import java.util.ArrayList;
 
@@ -53,7 +57,7 @@ public class MyListActivity extends AppCompatActivity {
             listView.setAdapter(adapter);
             LoadListRest llr = new LoadListRest(this, adapter);
             Toast.makeText(this, "Now now", Toast.LENGTH_LONG).show();
-            llr.execute("http://192.168.1.9:8080/ListDB/webresources/entities.product/bubbles");
+            llr.execute("http://192.168.1.6:8080/ListDB/webresources/entities.product/bubbles");
         }
         //String mylist = readListFile();
         //if (mylist!=null){
@@ -91,21 +95,31 @@ public class MyListActivity extends AppCompatActivity {
         } */
     }
 
-    private String readListFile() {
-        try{
-               FileInputStream fin = openFileInput(file);
-               int c;
-               String temp="";
-               
-               while( (c = fin.read()) != -1){
-                  temp = temp + Character.toString((char)c);
-               }
-               return temp;
-            }
-            catch(Exception ex){
-                Log.e("gr.uoa.di.list","",ex);
-                return null;
-            }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mainmenu, menu);
+        return true;
+    }
+
+    //Just for testing the menu. Does nothing for now
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle item selection
+    switch (item.getItemId()) {
+        case R.id.mylist:
+            Intent intent = new Intent(this, MyListActivity.class);
+            startActivity(intent);
+            return true;
+        case R.id.allprod:
+            intent = new Intent(this, ShowProductsActivity.class);
+            startActivity(intent);
+            return true;
+        case R.id.settings:
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
     
 }

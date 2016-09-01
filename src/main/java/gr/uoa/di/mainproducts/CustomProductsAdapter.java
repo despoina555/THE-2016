@@ -58,16 +58,11 @@ public class CustomProductsAdapter extends BaseAdapter{
         View itemView;
         ArrayList<Float> showprice;
         Float tempprice;
-        /*if (convertView == null){
-            itemView = (RelativeLayout) mLayoutInflater.inflate(R.layout.activity_list_display, parent, false);
-        }
-        else{
-            itemView = (RelativeLayout) convertView;
-        }*/
-       itemView = mLayoutInflater.inflate(R.layout.row_list_item, null);
+
+       itemView = mLayoutInflater.inflate(R.layout.row_show_item, null);
        TextView titlet = (TextView) itemView.findViewById(R.id.listTitle);
        TextView pricet = (TextView) itemView.findViewById(R.id.listPrice);
-       Button addlist = (Button) itemView.findViewById(R.id.addlist);
+       final Button addlist = (Button) itemView.findViewById(R.id.addlist);
        String title = mProducts.get(position).getProdname();
        titlet.setText(title);
        showprice = mProducts.get(position).getProdprice();
@@ -85,6 +80,8 @@ public class CustomProductsAdapter extends BaseAdapter{
                 ShoppingList shl = new ShoppingList();
                 if(shl.writetofile(String.valueOf(mProducts.get(position).getProdnum()), mContext) == true){
                     Toast.makeText(mContext, mProducts.get(position).getProdname() + " has been added to list.", Toast.LENGTH_LONG).show();
+                    addlist.setEnabled(false);
+                    addlist.setText("Added");
                 }
                 else{
                     Toast.makeText(mContext, "Product already on the list.", Toast.LENGTH_LONG).show();

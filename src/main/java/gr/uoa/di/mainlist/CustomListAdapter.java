@@ -18,6 +18,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.util.ArrayList;
 import gr.uoa.di.R;
+import gr.uoa.di.modelproducts.ShoppingList;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -57,16 +58,12 @@ class CustomListAdapter extends BaseAdapter{
         View itemView;
         ArrayList<Float> showprice;
         Float tempprice;
-        /*if (convertView == null){
-            itemView = (RelativeLayout) mLayoutInflater.inflate(R.layout.activity_list_display, parent, false);
-        }
-        else{
-            itemView = (RelativeLayout) convertView;
-        }*/
+        
        itemView = mLayoutInflater.inflate(R.layout.row_list_item, null);
-       TextView titlet = (TextView) itemView.findViewById(R.id.listTitle);
-       TextView pricet = (TextView) itemView.findViewById(R.id.listPrice);
-       Button addlist = (Button) itemView.findViewById(R.id.addlist);
+       TextView titlet = (TextView) itemView.findViewById(R.id.mylistTitle);
+       TextView pricet = (TextView) itemView.findViewById(R.id.mylistPrice);
+       final Button removelist = (Button) itemView.findViewById(R.id.removelist);
+       final Button showsels = (Button) itemView.findViewById(R.id.showsellers);
        String title = mProducts.get(position).getProdname();
        titlet.setText(title);
        showprice = mProducts.get(position).getProdprice();
@@ -77,18 +74,18 @@ class CustomListAdapter extends BaseAdapter{
            }
        }
        String price = String.valueOf(tempprice);
-       pricet.setText("Lowest price found: E" + price + " (Price may be unavailable near you)");
-       addlist.setOnClickListener(new OnClickListener() {            
+       pricet.setText("Lowest price found: E" + price + "\n(Price may be unavailable near you)");
+       removelist.setOnClickListener(new OnClickListener() {            
             @Override
             public void onClick(View v) {
-                try {
-                    FileOutputStream fOut;
-                    fOut = mContext.openFileOutput(file, MODE_APPEND);
-                    fOut.write((mProducts.get(position).getProdnum() + " ").getBytes());
-                    fOut.close();
-                    Toast.makeText(mContext, mProducts.get(position).getProdname() + " has been added to list.", Toast.LENGTH_LONG).show();
-                } catch (IOException ex) {
-                    Logger.getLogger(CustomListAdapter.class.getName()).log(Level.SEVERE, null, ex);
+                ShoppingList shl = new ShoppingList();
+                if(shl.deletefromfile(String.valueOf(mProducts.get(position).getProdnum()), mContext) == true){
+                    Toast.makeText(mContext, mProducts.get(position).getProdname() + " has been removed from the list.", Toast.LENGTH_LONG).show();
+                    removelist.setEnabled(false);
+                    removelist.setText("Removed");
+                }
+                else{
+                    Toast.makeText(mContext, "Error. Product could not be removed from the list.", Toast.LENGTH_LONG).show();
                 }
             }
         }); 
