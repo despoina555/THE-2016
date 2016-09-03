@@ -5,7 +5,7 @@
        android:layout_height="wrap_content" >
  
        <TextView
-          android:id="@+id/listTitle"
+          android:id="@+id/mylistTitle"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
           android:text="A List item title"
@@ -13,23 +13,26 @@
           android:textStyle="bold" />
  
        <TextView
-          android:id="@+id/listPrice"
+          android:id="@+id/mylistPrice"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/listTitle"
+          android:layout_below="@+id/mylistTitle"
           android:layout_marginTop="5dp"
           android:maxLines="4"
           android:text="The List item description"
-          android:textSize="14sp" />
-       
-        <TextView
-          android:id="@+id/clickmsg"
+          android:textSize="14sp" />     
+ 
+        <Button
+          android:id="@+id/removelist"
           android:layout_width="wrap_content"
           android:layout_height="wrap_content"
-          android:layout_below="@+id/listPrice"
-          android:layout_marginTop="5dp"
-          android:maxLines="4"
-          android:text="Click product to add it to your list"
-          android:textSize="11sp" />      
- 
+          android:layout_alignParentRight="true"
+          android:text="Remove"  />
+        
+        <Button
+            android:id="@+id/showsellers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@+id/removelist"
+            android:text="Show sellers" />    
 </RelativeLayout>

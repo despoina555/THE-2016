@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Noodles</string>
+    <string name="app_name">NoodlesMap</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Show all the products</string>
     <string name="action_settings">Action Settings</string>
@@ -20,4 +20,5 @@
     <string name="invalid_address_used">invalid_address_used</string>
     <string name="address_found">address found!!</string>
 
+    <string name="title_show_prods">All products</string>
 </resources>

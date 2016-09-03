@@ -18,6 +18,7 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity android:name=".mainproducts.MyActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -46,7 +47,7 @@
         <activity
             android:name=".mainproducts.DisplayResults"
             android:label="@string/title_activity_display_results"
-            android:parentActivityName=".mainproducts.MyActivity">
+            android:parentActivityName=".mainproducts.MyActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".mainproducts.MyActivity" />
@@ -54,12 +55,19 @@
         <activity
             android:name=".mainlist.MyListActivity"
             android:label="@string/title_list_display"
-            android:parentActivityName=".mainproducts.MyActivity">
+            android:parentActivityName=".mainproducts.MyActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".mainproducts.MyActivity" />
         </activity>
-        <activity android:name=".mainproducts.ShowProductsActivity" />
+
+        <activity android:name=".mainproducts.ShowProductsActivity"
+            android:label="@string/title_show_prods"
+            android:parentActivityName=".mainproducts.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".mainproducts.MyActivity" />
+        </activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -67,7 +75,7 @@
              Note that the API key is linked to the encryption key used to sign the APK.
              You need a different API key for each encryption key, including the release key that is used to
              sign the APK for publishing.
-             You can define the keys for the debug and release targets in src/debug/ and src/release/. 
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
