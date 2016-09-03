@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NoodlesMap</string>
+    <string name="app_name">Noodles</string>
     <string name="edit_message">Enter a message</string>
     <string name="button_send">Show all the products</string>
     <string name="action_settings">Action Settings</string>
@@ -11,6 +11,13 @@
     <string name="settings">Settings</string>
     <string name="title_list_display">My List</string>
     <string name="title_activity_seller_info_maps">Map</string>
-    <string name="maps">MapsForDedduging</string>
+    <string name="maps">show me on map!</string>//maps for debugging!!
     <string name="title_activity_maps">Seller\'s Info</string>
+
+
+    <string name="service_not_available">No geocoder available </string>
+    <string name="no_address_found">Sorry, no address found</string>
+    <string name="invalid_address_used">invalid_address_used</string>
+    <string name="address_found">address found!!</string>
+
 </resources>
