@@ -8,6 +8,7 @@ package gr.uoa.di.mainlist;
 import gr.uoa.di.modelproducts.Products;
 import android.content.Context;
 import static android.content.Context.MODE_APPEND;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -16,8 +17,11 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.gson.Gson;
 import java.util.ArrayList;
 import gr.uoa.di.R;
+import gr.uoa.di.mainproducts.DisplayResults;
+import gr.uoa.di.mainsellers.DisplaySellersActivity;
 import gr.uoa.di.modelproducts.ShoppingList;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -87,6 +91,16 @@ class CustomListAdapter extends BaseAdapter{
                 else{
                     Toast.makeText(mContext, "Error. Product could not be removed from the list.", Toast.LENGTH_LONG).show();
                 }
+            }
+        }); 
+       showsels.setOnClickListener(new OnClickListener() {            
+            @Override
+            public void onClick(View v) {
+                Gson curprod = new Gson();
+                String jsonprod = curprod.toJson(mProducts.get(position));
+                Intent resultIntent= new Intent(mContext, DisplaySellersActivity.class);
+                resultIntent.putExtra("gr.uoa.di.prod_to_show", jsonprod);
+                mContext.startActivity(resultIntent);  
             }
         }); 
        return itemView;

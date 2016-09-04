@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+       xmlns:android="http://schemas.android.com/apk/res/android"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" >
+ 
+       <TextView
+          android:id="@+id/sellerName"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="A Seller Name"
+          android:textSize="18sp"
+          android:textStyle="bold" />
+ 
+       <TextView
+          android:id="@+id/sellerAddress"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/sellerName"
+          android:layout_marginTop="5dp"
+          android:text="A Seller Address"
+          android:textSize="14sp" />  
+            
+       <TextView
+          android:id="@+id/sellerPrice"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/sellerAddress"
+          android:layout_marginTop="5dp"
+          android:maxLines="4"
+          android:text="The Product Price"
+          android:textStyle="bold"
+          android:textSize="14sp" />     
+ 
+       <TextView
+          android:id="@+id/sellerMail"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/sellerPrice"
+          android:layout_marginTop="5dp"
+          android:text="A Seller Mail"
+          android:textSize="14sp" /> 
+       
+        <Button
+          android:id="@+id/showmap"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:text="Show Map"  />
+        
+            
+</RelativeLayout>

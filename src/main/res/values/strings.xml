@@ -11,14 +11,15 @@
     <string name="settings">Settings</string>
     <string name="title_list_display">My List</string>
     <string name="title_activity_seller_info_maps">Map</string>
-    <string name="maps">show me on map!</string>//maps for debugging!!
+    <string name="maps">show me on map!</string>
     <string name="title_activity_maps">Seller\'s Info</string>
 
-
+    <string name="google_maps_key">AIzaSyCdwh7xsNn7GjgRF9zqmSgJIpvUGA153-M</string>
     <string name="service_not_available">No geocoder available </string>
     <string name="no_address_found">Sorry, no address found</string>
     <string name="invalid_address_used">invalid_address_used</string>
     <string name="address_found">address found!!</string>
 
     <string name="title_show_prods">All products</string>
+    <string name="title_show_sellers">Sellers nearby</string>
 </resources>

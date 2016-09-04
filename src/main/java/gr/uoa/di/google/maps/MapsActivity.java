@@ -1,6 +1,7 @@
 package gr.uoa.di.google.maps;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -219,7 +220,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     }
 
-
+@SuppressLint("ParcelCreator") 
  class AddressResultReceiver extends ResultReceiver {
 
         public AddressResultReceiver(Handler handler) {

@@ -56,7 +56,6 @@ public class MyListActivity extends AppCompatActivity {
             ListView listView = (ListView) findViewById(R.id.mobile_list);
             listView.setAdapter(adapter);
             LoadListRest llr = new LoadListRest(this, adapter);
-            Toast.makeText(this, "Now now", Toast.LENGTH_LONG).show();
             llr.execute("http://192.168.1.6:8080/ListDB/webresources/entities.product/bubbles");
         }
         //String mylist = readListFile();

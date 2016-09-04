@@ -17,6 +17,33 @@ public class Sellers {
     private String address;
     private String email;
     private int phone;
+    private Float price;
+    private Float lat;
+    private Float longt;
+
+    public Float getLat() {
+        return lat;
+    }
+
+    public void setLat(Float lat) {
+        this.lat = lat;
+    }
+
+    public Float getLongt() {
+        return longt;
+    }
+
+    public void setLongt(Float longt) {
+        this.longt = longt;
+    }
+    
+    public Float getPrice() {
+        return price;
+    }
+
+    public void setPrice(Float price) {
+        this.price = price;
+    }
     
     public int getId() {
         return id;
