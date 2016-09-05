@@ -1,0 +1,27 @@
+<resources>
+<string-array name="orderArray">
+	<item>Order by price</item>
+	<item>Order by distance</item>
+</string-array>
+
+<string-array name="orderValues">
+    <item>1</item>
+    <item>2</item>
+</string-array>
+
+<string-array name="distanceArray">
+	<item>Up to 1km</item>
+	<item>Up to 5km</item>
+        <item>Up to 10km</item>
+        <item>Up to 25km</item>
+        <item>More than 25km</item>
+</string-array>
+
+<string-array name="distanceValues">
+	<item>1</item>
+	<item>5</item>
+        <item>10</item>
+        <item>25</item>
+        <item>-1</item>
+</string-array>
+</resources>

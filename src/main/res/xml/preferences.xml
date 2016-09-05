@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <ListPreference     android:title="Store Order"
+                      android:defaultValue="1"
+                      android:summary="This option affects in what order the stores appear."
+                      android:entries="@array/orderArray"
+                      android:entryValues="@array/orderValues"
+                      android:key="storeOrder" />
+  <ListPreference     android:title="Max distance stores"
+                      android:summary="This option specifies the maximum distance from your current position that stores will be displayed."
+                      android:key="distanceStore"
+                      android:defaultValue="1"
+                      android:entries="@array/distanceArray"
+                      android:entryValues="@array/distanceValues" />
+</PreferenceScreen>
