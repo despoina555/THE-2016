@@ -78,6 +78,8 @@ public class MyActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         case R.id.settings:
+            intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         case R.id.maps:
             Intent intentMap = new Intent(this, MapsActivity.class);

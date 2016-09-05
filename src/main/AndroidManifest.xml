@@ -52,6 +52,14 @@
                 android:value=".mainproducts.MyActivity" />
         </activity>
         <activity
+            android:name=".mainproducts.SettingsActivity"
+            android:label="@string/title_settings"
+            android:parentActivityName=".mainproducts.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".mainproducts.MyActivity" />
+        </activity>
+        <activity
             android:name=".mainlist.MyListActivity"
             android:label="@string/title_list_display"
             android:parentActivityName=".mainproducts.MyActivity" >
