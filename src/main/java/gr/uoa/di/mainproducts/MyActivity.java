@@ -1,15 +1,16 @@
 package gr.uoa.di.mainproducts;
 
-import gr.uoa.di.google.maps.MapsActivity;
-import gr.uoa.di.mainlist.MyListActivity;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
 import gr.uoa.di.R;
+import gr.uoa.di.mainlist.MyListActivity;
+
 
 public class MyActivity extends AppCompatActivity {
 
@@ -80,7 +81,7 @@ public class MyActivity extends AppCompatActivity {
         case R.id.settings:
             return true;
         case R.id.maps:
-            Intent intentMap = new Intent(this, MapsActivity.class);
+            Intent intentMap = new Intent(this,gr.uoa.di.google.maps.MapsActivity.class);
             startActivity(intentMap);
             return true;
         default:

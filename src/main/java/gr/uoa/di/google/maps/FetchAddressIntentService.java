@@ -39,15 +39,15 @@ public class FetchAddressIntentService extends IntentService {
 
         resultReceiver = intent.getParcelableExtra(Constants.RECEIVER);
 //        int fetchType = intent.getIntExtra(Constants.FETCH_TYPE_EXTRA, 0);
-        Locale locale= new Locale("el-GR");
-        Locale.setDefault(locale);
+//        Locale locale= new Locale("el-GR");//eternity loop :PPP
+//        Locale.setDefault(locale);
         Geocoder geocoder = new Geocoder(this,Locale.getDefault());
 
         List<Address> addresses = null;
 
         try {
             String address = intent.getStringExtra(Constants.LOCATION_NAME_DATA_EXTRA);
-            addresses = geocoder.getFromLocationName(address.toString(),1);//address.toString()==malakia??
+            addresses = geocoder.getFromLocationName(address.toString(),2);//address.toString()==malakia??
 
         } catch (IOException ioException) {
             // Catch network or other I/O problems.

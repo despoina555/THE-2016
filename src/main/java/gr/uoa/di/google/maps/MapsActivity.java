@@ -31,10 +31,14 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+//import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
+//import com.google.android.gms.maps.StreetViewPanorama;
+//import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
 
 import gr.uoa.di.R;
 
@@ -44,25 +48,32 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     private GoogleApiClient mGoogleApiClient;//used for find Last current location
     private LatLng mylocation = null;
 
-    private static final String TAG = "MAIN_ACTIVITY";
+
 
     int fetchType = Constants.USE_ADDRESS_NAME;
     TextView selleraddress;
     AddressResultReceiver mResultReceiver;
-
+    LatLng sellersplace=null;
 
     ProgressBar progressBar;
     TextView infoText;
     TextView infoText2;
 
+
+    private static final String TAG = "MapsActivity";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+//         Obtain the SupportMapFragment and get notified when the map is ready to be used.
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+//        StreetViewPanoramaFragment streetViewPanoramaFragment =
+//                (StreetViewPanoramaFragment) getFragmentManager()
+//                        .findFragmentById(R.id.map);
+//        streetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
 
         if (mGoogleApiClient == null) {
 
@@ -105,7 +116,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         if(fetchType == Constants.USE_ADDRESS_NAME) {
             //selleraddress----> TODO:: 8a thn pernw apo list pou periexei tous sellers
 
-//            selleraddress.setText("Ούλωφ Πάλμε 44, T.K. 15771, Ζωγράφου");
 //            if(selleraddress.getText().length() == 0) {
 //                Toast.makeText(this, "Please enter an address name", Toast.LENGTH_LONG).show();
 //                return;
@@ -141,8 +151,10 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 Double latitude = mLastLocation.getLatitude();
                 Double longitude = mLastLocation.getLongitude();
 
-                mylocation = new LatLng(latitude, longitude);
+                mylocation = new LatLng(longitude,latitude );
 
+                Log.d(TAG,"your location is loc=="+mylocation);
+                infoText2.setText("your location is loc=="+mylocation);
                 Toast toast = Toast.makeText(getApplicationContext(), "i found your location" + mylocation, Toast.LENGTH_SHORT);
                 toast.show();
             /*When the My Location layer is enabled, the My Location button appears in the top right corner of the map.
@@ -151,12 +163,22 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
     }
 
+//    @Override
+//    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+//        if (requestCode == MY_LOCATION_REQUEST_CODE) {
+//            if (permissions.length == 1 &&
+//                    permissions[0] == Manifest.permission.ACCESS_FINE_LOCATION &&
+//                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+//                mMap.setMyLocationEnabled(true);
+//            } else {
+//                // Permission was denied. Display an error message.
+//            }
+//        }
+
     //methods used by mGoogleApiClient
     protected void onStart() {
         mGoogleApiClient.connect();
         super.onStart();
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
 //        Action viewAction = Action.newAction(
 //                Action.TYPE_VIEW, // TODO: choose an action type.
 //                "Maps Page", // TODO: Define a title for the content shown.
@@ -220,7 +242,38 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
 
- class AddressResultReceiver extends ResultReceiver {
+
+    public void giveDirections(View view) {
+        //this method activated when the user push the image button and the web service for giving directions starts!
+        if( sellersplace!=null && mylocation!=null){
+            //calculate directions!
+
+            double mlatitude=  mylocation.latitude;
+            double mlongitude=  mylocation.longitude;
+            double sellerslatitude= sellersplace.latitude;
+            double sellerslongitude= sellersplace.longitude;
+
+            mMap.addPolyline((new PolylineOptions()).add(mylocation).add(sellersplace));
+
+
+            //invalid ---errorss!!
+//            DirectionsFetcher dirf = new DirectionsFetcher(this);
+//            dirf.execute();
+        }
+
+    }
+
+//    @Override
+//    public void onStreetViewPanoramaReady(StreetViewPanorama streetViewPanorama) {
+//        if(mylocation!=null) {
+//            streetViewPanorama.setPosition(mylocation);
+//            streetViewPanorama.setStreetNamesEnabled(true);
+//            streetViewPanorama.setZoomGesturesEnabled(true);
+//        }
+//    }
+
+
+    class AddressResultReceiver extends ResultReceiver {
 
         public AddressResultReceiver(Handler handler) {
             super(handler);
@@ -238,9 +291,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 "Address: " + resultData.getString(Constants.RESULT_DATA_KEY));
                         double lng=address.getLongitude();
                         double lat=address.getLatitude();
-                        LatLng shop = new LatLng(lng, lat);
-                        mMap.addMarker(new MarkerOptions().position(shop).title("Marker in seller's place"));
-                        mMap.moveCamera(CameraUpdateFactory.newLatLng(shop));
+
+                        Log.d(TAG,"in onReceiveResult, class AddressResultReceiver, the seller is on loc=="+lng+" , "+lat);
+                        sellersplace = new LatLng(lat,lng );
+                        mMap.addMarker(new MarkerOptions().position(sellersplace).title("Marker in seller's place"));
+                        mMap.moveCamera(CameraUpdateFactory.newLatLng(sellersplace));
                     }
                 });
             } else {
