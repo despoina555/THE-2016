@@ -6,8 +6,10 @@
 package gr.uoa.di.mainsellers;
 
 import android.app.Activity;
+import android.location.Location;
 import android.os.AsyncTask;
 import android.util.Log;
+import com.google.android.gms.maps.model.LatLng;
 import gr.uoa.di.modelproducts.Products;
 import gr.uoa.di.modelproducts.Sellers;
 import java.io.BufferedReader;
@@ -20,6 +22,8 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import com.google.maps.android.SphericalUtil;
+import java.util.Collections;
 
 /**
  *
@@ -29,11 +33,17 @@ public class LoadSellersRest extends AsyncTask <String,Void,String>{
     private final Activity parent;
     private final CustomSellersAdapter mAdapter;
     private final Products product;
+    private final Location loc;
+    private final String maxdist;
+    private final String order;
     
-    public LoadSellersRest(Activity parent, CustomSellersAdapter adapter, Products pd){
+    public LoadSellersRest(Activity parent, CustomSellersAdapter adapter, Products pd, Location curloc, String dist, String morder){
         this.parent=parent;
         this.mAdapter = adapter;
         this.product = pd;
+        this.loc = curloc;
+        this.maxdist = dist;
+        this.order = morder;
     }
     
     @Override
@@ -85,17 +95,29 @@ public class LoadSellersRest extends AsyncTask <String,Void,String>{
                 for(int i=0 ; i<jsonMainNode.length() ; i++){
                     jsonResponse =((JSONObject)jsonMainNode.get(i));
                     if(product.getSellerid().get(j) == Integer.valueOf(jsonResponse.getString("sellerid"))){
-                        sl = new Sellers();
-                        sl.setId(Integer.valueOf(jsonResponse.getString("sellerid")));
-                        sl.setAddress(jsonResponse.getString("selleraddress"));
-                        sl.setEmail(jsonResponse.getString("sellermail"));
-                        sl.setName(jsonResponse.getString("sellername"));
-                        sl.setPrice(product.getProdprice().get(j));
-                        sl.setLat(Float.valueOf(jsonResponse.getString("lat")));
-                        sl.setLongt(Float.valueOf(jsonResponse.getString("long1")));
-                        alsl.add(sl);
+                        LatLng coord = new LatLng(Double.parseDouble(jsonResponse.getString("lat")), Double.parseDouble(jsonResponse.getString("long1")));
+                        LatLng curcoord = new LatLng(loc.getLatitude(),loc.getLongitude());
+                        double dist = SphericalUtil.computeDistanceBetween(coord, curcoord);
+                        if( dist < (Double.parseDouble(maxdist)*1000.0) || Double.parseDouble(maxdist) == -1){
+                            sl = new Sellers();
+                            sl.setId(Integer.valueOf(jsonResponse.getString("sellerid")));
+                            sl.setAddress(jsonResponse.getString("selleraddress"));
+                            sl.setEmail(jsonResponse.getString("sellermail"));
+                            sl.setName(jsonResponse.getString("sellername"));
+                            sl.setPrice(product.getProdprice().get(j));
+                            sl.setLat(Float.valueOf(jsonResponse.getString("lat")));
+                            sl.setLongt(Float.valueOf(jsonResponse.getString("long1")));
+                            sl.setDist(dist);
+                            alsl.add(sl);
+                        }
                     }
                 }
+            }
+            if("1".equals(order)){
+                Collections.sort(alsl, Sellers.SelPriceComparator);
+            }
+            else if("2".equals(order)){
+                Collections.sort(alsl, Sellers.SelDistComparator);
             }
         } catch (JSONException ex) {
             Log.e("gr.uoa.hello","",ex);

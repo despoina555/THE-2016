@@ -272,7 +272,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 //            streetViewPanorama.setZoomGesturesEnabled(true);
 //        }
 //    }
-
     @SuppressLint("ParcelCreator")
     class AddressResultReceiver extends ResultReceiver {
 

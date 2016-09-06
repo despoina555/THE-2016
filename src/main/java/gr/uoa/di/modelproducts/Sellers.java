@@ -3,7 +3,7 @@
 */
 package gr.uoa.di.modelproducts;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 
 /**
  *
@@ -20,6 +20,15 @@ public class Sellers {
     private Float price;
     private Float lat;
     private Float longt;
+    private double dist;
+
+    public double getDist() {
+        return dist;
+    }
+
+    public void setDist(double dist) {
+        this.dist = dist;
+    }
 
     public Float getLat() {
         return lat;
@@ -85,4 +94,23 @@ public class Sellers {
         this.phone = phone;
     }
     
+    public static Comparator<Sellers> SelPriceComparator = new Comparator<Sellers>() {
+
+        @Override
+	public int compare(Sellers s1, Sellers s2) {
+	   Float SelPrice1 = s1.getPrice();
+	   Float SelPrice2 = s2.getPrice();
+	   //ascending order
+	   return SelPrice1.compareTo(SelPrice2);
+    }};
+    
+    public static Comparator<Sellers> SelDistComparator = new Comparator<Sellers>() {
+
+        @Override
+	public int compare(Sellers s1, Sellers s2) {
+	   double SelDist1 = s1.getDist();
+	   double SelDist2 = s2.getDist();
+	   //ascending order
+	   return Double.compare(SelDist1, SelDist2);
+    }};
 }
