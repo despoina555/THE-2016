@@ -64,6 +64,7 @@ public class DisplaySellersActivity extends AppCompatActivity implements Connect
         
         adapter = new CustomSellersAdapter(this);
         ListView listView = (ListView) findViewById(R.id.seller_list);
+        listView.setEmptyView(findViewById(R.id.emptyview));
         listView.setAdapter(adapter);
     }
 

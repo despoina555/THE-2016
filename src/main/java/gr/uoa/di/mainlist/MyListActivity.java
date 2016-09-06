@@ -33,7 +33,7 @@ import java.util.ArrayList;
  */
 public class MyListActivity extends AppCompatActivity {
 
-    private String file = "mylist.txt";
+    private final String file = "mylist.txt";
     /**
      * Called when the activity is first created.
      */
@@ -41,8 +41,8 @@ public class MyListActivity extends AppCompatActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.activity_list_display);
-        ShoppingList shl = new ShoppingList();
-        ArrayList<String> templ;
+        //ShoppingList shl = new ShoppingList();
+        /*ArrayList<String> templ;
         templ = shl.readfromfile(this);
         if(templ == null){
             LinearLayout layout = (LinearLayout) findViewById(R.id.linearlist);
@@ -51,13 +51,14 @@ public class MyListActivity extends AppCompatActivity {
             textView.setText("Your list is empty");
             layout.addView(textView);
         }
-        else{
+        else{*/
             CustomListAdapter adapter = new CustomListAdapter(this);
             ListView listView = (ListView) findViewById(R.id.mobile_list);
+            listView.setEmptyView(findViewById(R.id.anemptylist));
             listView.setAdapter(adapter);
             LoadListRest llr = new LoadListRest(this, adapter);
             llr.execute("http://192.168.1.6:8080/ListDB/webresources/entities.product/bubbles");
-        }
+        //}
         //String mylist = readListFile();
         //if (mylist!=null){
            // String items[] = mylist.split(" ");

@@ -80,40 +80,42 @@ class LoadListRest extends AsyncTask <String,Void,String>{
         ShoppingList shl = new ShoppingList();
         ArrayList<String> templ;
         templ = shl.readfromfile(parent);
-        try {
-            JSONArray jsonMainNode = new JSONArray(result);
-            for(int j=1 ; j<=templ.size() ; j++){
-                for(int i=0 ; i<jsonMainNode.length() ; i++){
-                    jsonResponse =((JSONObject)jsonMainNode.get(i));
-                    if(Integer.valueOf(jsonResponse.getString("prodnum")) == Integer.valueOf(templ.get(j-1))){
-                        if((pd!=null) && (pd.getProdnum()== Integer.valueOf(jsonResponse.getString("prodnum")))){
-                            pd = alpd.remove(alpd.size()-1);
-                            temppdsel = pd.getSellerid();
-                            temppdprice = pd.getProdprice();
-                            temppdsel.add(Integer.valueOf(jsonResponse.getString("sellerid")));
-                            temppdprice.add(Float.valueOf(jsonResponse.getString("prodprice")));
-                            pd.setProdprice(temppdprice);
-                            pd.setSellerid(temppdsel);
-                            alpd.add(pd);
-                        }
-                        else{
-                            pd = new Products();
-                            pd.setProdname(jsonResponse.getString("prodname"));
-                            pd.setProdid(Integer.valueOf(jsonResponse.getString("prodid")));
-                            pd.setProdnum(Integer.valueOf(jsonResponse.getString("prodnum")));
-                            temppdsel=pd.getSellerid();
-                            temppdprice = pd.getProdprice();
-                            temppdsel.add(Integer.valueOf(jsonResponse.getString("sellerid")));
-                            pd.setSellerid(temppdsel);
-                            temppdprice.add(Float.valueOf(jsonResponse.getString("prodprice")));
-                            pd.setProdprice(temppdprice);
-                            alpd.add(pd);
+        if(templ!=null){
+            try {
+                JSONArray jsonMainNode = new JSONArray(result);
+                for(int j=1 ; j<=templ.size() ; j++){
+                    for(int i=0 ; i<jsonMainNode.length() ; i++){
+                        jsonResponse =((JSONObject)jsonMainNode.get(i));
+                        if(Integer.valueOf(jsonResponse.getString("prodnum")) == Integer.valueOf(templ.get(j-1))){
+                            if((pd!=null) && (pd.getProdnum()== Integer.valueOf(jsonResponse.getString("prodnum")))){
+                                pd = alpd.remove(alpd.size()-1);
+                                temppdsel = pd.getSellerid();
+                                temppdprice = pd.getProdprice();
+                                temppdsel.add(Integer.valueOf(jsonResponse.getString("sellerid")));
+                                temppdprice.add(Float.valueOf(jsonResponse.getString("prodprice")));
+                                pd.setProdprice(temppdprice);
+                                pd.setSellerid(temppdsel);
+                                alpd.add(pd);
+                            }
+                            else{
+                                pd = new Products();
+                                pd.setProdname(jsonResponse.getString("prodname"));
+                                pd.setProdid(Integer.valueOf(jsonResponse.getString("prodid")));
+                                pd.setProdnum(Integer.valueOf(jsonResponse.getString("prodnum")));
+                                temppdsel=pd.getSellerid();
+                                temppdprice = pd.getProdprice();
+                                temppdsel.add(Integer.valueOf(jsonResponse.getString("sellerid")));
+                                pd.setSellerid(temppdsel);
+                                temppdprice.add(Float.valueOf(jsonResponse.getString("prodprice")));
+                                pd.setProdprice(temppdprice);
+                                alpd.add(pd);
+                            }
                         }
                     }
                 }
+            } catch (JSONException ex) {
+                Log.e("gr.uoa.hello","",ex);
             }
-        } catch (JSONException ex) {
-            Log.e("gr.uoa.hello","",ex);
         }
         mAdapter.upDateEntries(alpd);
     }
