@@ -83,6 +83,15 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".mainproducts.MyActivity" />
         </activity>
+        
+        <activity
+            android:name=".mainsellers.InsertRatingActivity"
+            android:label="@string/title_insert_rating"
+            android:parentActivityName=".mainproducts.MyActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".mainproducts.MyActivity" />
+        </activity>
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.

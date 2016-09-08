@@ -36,7 +36,6 @@
         android:id="@+id/directionsButton"
         android:contentDescription="Directions"
         android:src="@drawable/directions"
-        android:onClick="giveDirections"
         android:layout_gravity="right|top" />
 
     <ProgressBar
