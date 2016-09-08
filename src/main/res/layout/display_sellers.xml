@@ -3,7 +3,7 @@
    android:layout_width="match_parent"
    android:layout_height="match_parent"
    android:orientation="vertical"
-   tools:context=".DisplaySellersActivity" 
+   tools:context=".mainsellers.DisplaySellersActivity"
    android:id="@+id/sel_disp">
 
    <TextView

@@ -9,7 +9,7 @@
         android:id="@+id/infoText"
         android:layout_width="match_parent"
         android:layout_height="42dp"
-        android:text="See on map::"
+        android:text="     Take the directions from the map"
         android:textSize="16sp"
         android:textColor="#3a1f9b" />
 
@@ -18,7 +18,7 @@
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
-        android:layout_height="304dp"
+        android:layout_height="380dp"
         tools:context="gr.uoa.di.google.maps.MapsActivity"
         android:layout_below="@id/infoText"
         android:layout_gravity="center" />
@@ -26,7 +26,7 @@
     <TextView
         android:id="@+id/infoText2"
         android:layout_width="match_parent"
-        android:layout_height="85dp"
+        android:layout_height="72dp"
         android:textStyle="bold"
         android:layout_gravity="center_horizontal|bottom" />
 
