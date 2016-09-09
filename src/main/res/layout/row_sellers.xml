@@ -48,5 +48,13 @@
           android:layout_alignParentRight="true"
           android:text="Show Map"  />
         
+        <Button
+          android:id="@+id/boughtbutton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_alignParentRight="true"
+          android:layout_below="@+id/showmap"
+          android:text="Bought!"    />
+        
             
 </RelativeLayout>

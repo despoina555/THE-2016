@@ -31,13 +31,12 @@
         android:layout_gravity="center_horizontal|bottom" />
 
     <ImageButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/directionsButton"
-    android:contentDescription="Directions"
-    android:src="@drawable/directions"
-    android:onClick="giveDirections"
-    android:layout_gravity="right|top" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/directionsButton"
+        android:contentDescription="Directions"
+        android:src="@drawable/directions"
+        android:layout_gravity="right|top" />
 
     <ProgressBar
         android:id="@+id/progressBar"

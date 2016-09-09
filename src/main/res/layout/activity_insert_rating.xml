@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+<LinearLayout
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/Nametext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Your name:" />
+    
+    <EditText android:id="@+id/Nameedit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_edit"  />
+    
+    <TextView
+        android:id="@+id/ProdNametext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="What did you buy?" />
+    
+    <EditText android:id="@+id/ProdNameedit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/prod_name_edit"  />
+    
+    <TextView
+        android:id="@+id/RealPricetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Below you can input the exact real price that you bought the item." />
+    
+    <EditText android:id="@+id/realPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/real_price"
+        android:inputType="numberDecimal" />
+
+    <TextView
+        android:id="@+id/Ratetext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Please rate your transaction with the store." />
+    
+    <RatingBar
+        android:id="@+id/ratingBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:numStars="5"
+        android:stepSize="1.0"
+        android:rating="2.0" />
+    
+    <TextView
+        android:id="@+id/commenttext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:text="Comment on the transaction with the store." />
+    
+    <EditText android:id="@+id/comment_edit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="@string/comment_hint" />
+
+    <Button
+        android:id="@+id/btnSubmitcom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="submitcomment"
+        android:text="Submit" />
+
+</LinearLayout>
+</ScrollView>

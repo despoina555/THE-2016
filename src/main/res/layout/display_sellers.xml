@@ -22,7 +22,7 @@
        android:id="@+id/emptyview"
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
-       android:text="No sellers near you. Try expanding maximum store range in Settings."
+       android:text="No sellers near you. Either your gps is turned off or you should try expanding the maximum store range in Settings."
        android:textSize="30dp"
        android:visibility="invisible"/>
 </LinearLayout>

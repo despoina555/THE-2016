@@ -6,6 +6,8 @@
 package gr.uoa.di.mainsellers;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,10 @@ import gr.uoa.di.R;
 import gr.uoa.di.modelproducts.Sellers;
 import gr.uoa.di.modelproducts.ShoppingList;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /**
  *
@@ -70,6 +76,21 @@ public class CustomSellersAdapter extends BaseAdapter{
 
             }
         }); 
+       final  Button boughtbut = (Button) sellerView.findViewById(R.id.boughtbutton);
+       boughtbut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, InsertRatingActivity.class);
+                JSONObject jsontogo = new JSONObject();
+                try {
+                    jsontogo.put("selid", mSellers.get(position).getId());
+                    intent.putExtra("infoforcom", jsontogo.toString());
+                } catch (JSONException ex) {
+                    Logger.getLogger(CustomSellersAdapter.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                mContext.startActivity(intent);
+            }
+        });
        return sellerView;
     }
     
