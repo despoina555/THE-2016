@@ -25,8 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/button_send"
-        android:onClick="sendMessage"
-        android:layout_below="@+id/welcome_message"/>
+        android:onClick="sendMessage"/>
 
     <!--<EditText-->
         <!--android:layout_width="wrap_content"-->

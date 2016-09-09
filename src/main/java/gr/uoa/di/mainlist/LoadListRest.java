@@ -116,6 +116,10 @@ class LoadListRest extends AsyncTask <String,Void,String>{
             } catch (JSONException ex) {
                 Log.e("gr.uoa.hello","",ex);
             }
+            pd = new Products();
+            pd.setProdname("Total");
+            pd.setProdid(-1);
+            alpd.add(pd);
         }
         mAdapter.upDateEntries(alpd);
     }
