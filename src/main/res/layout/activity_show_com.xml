@@ -1,0 +1,28 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+   xmlns:tools="http://schemas.android.com/tools"
+   android:layout_width="match_parent"
+   android:layout_height="match_parent"
+   android:orientation="vertical"
+   tools:context=".mainsellers.ShowComActivity"
+   android:id="@+id/com_disp">
+
+   <TextView
+        android:id="@+id/selname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="60dp"/>
+   
+   <ListView
+      android:id="@+id/comments_list"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content" >
+   </ListView>
+   
+   <TextView
+       android:id="@+id/emptycommentsview"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:text="No ratings available for this seller."
+       android:textSize="30dp"
+       android:visibility="invisible"/>
+</LinearLayout>

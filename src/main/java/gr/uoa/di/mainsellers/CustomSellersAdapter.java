@@ -91,6 +91,23 @@ public class CustomSellersAdapter extends BaseAdapter{
                 mContext.startActivity(intent);
             }
         });
+       
+       final Button combut = (Button) sellerView.findViewById(R.id.showcombutton);
+       combut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(mContext, ShowComActivity.class);
+                JSONObject jsontogo = new JSONObject();
+                try {
+                    jsontogo.put("selid", mSellers.get(position).getId());
+                    jsontogo.put("selname", mSellers.get(position).getName());
+                    intent.putExtra("infoforcom", jsontogo.toString());
+                } catch (JSONException ex) {
+                    Logger.getLogger(CustomSellersAdapter.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                mContext.startActivity(intent);
+            }
+        });
        return sellerView;
     }
     

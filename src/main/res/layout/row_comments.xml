@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+       xmlns:android="http://schemas.android.com/apk/res/android"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content" >
+ 
+       <TextView
+          android:id="@+id/commentName"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="A commenter's Name"
+          android:textSize="18sp"
+          android:textStyle="bold" />
+ 
+       <TextView
+          android:id="@+id/comrating"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/commentName"
+          android:layout_marginTop="5dp"
+          android:text="A rating"
+          android:textSize="14sp" />  
+            
+       <TextView
+          android:id="@+id/comprodname"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/comrating"
+          android:layout_marginTop="5dp"
+          android:maxLines="4"
+          android:text="The Product Name"
+          android:textStyle="bold"
+          android:textSize="14sp" />     
+ 
+       <TextView
+          android:id="@+id/comprodprice"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/comprodname"
+          android:layout_marginTop="5dp"
+          android:text="The real price"
+          android:textSize="14sp" /> 
+       
+        <TextView
+          android:id="@+id/comtext"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_below="@+id/comprodprice"
+          android:layout_marginTop="5dp"
+          android:text="The comment"
+          android:textSize="14sp" /> 
+            
+</RelativeLayout>

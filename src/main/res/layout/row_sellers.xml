@@ -56,5 +56,11 @@
           android:layout_below="@+id/showmap"
           android:text="Bought!"    />
         
+        <Button
+          android:id="@+id/showcombutton"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_toLeftOf="@+id/showmap"
+          android:text="Show ratings"    />
             
 </RelativeLayout>
