@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -72,6 +73,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     ProgressBar progressBar;
     TextView infoText;
     TextView infoText2;
+    ImageButton directionsButton;
 
 
     private static final String TAG = "MapsActivity";
@@ -98,12 +100,19 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         infoText = (TextView) findViewById(R.id.infoText);
         infoText2 = (TextView) findViewById(R.id.infoText2);
+        directionsButton=(ImageButton) findViewById(R.id.directionsButton);
 
-
-//       TODO:: (correct) selleraddress=(TextView) findViewById(R.id.selleraddress);
-
-//        mResultReceiver = new AddressResultReceiver(null);
+        directionsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast toast = Toast.makeText(getApplicationContext(), "begins to give you directios" , Toast.LENGTH_SHORT);
+                toast.show();
+                giveDirections();
+            }
+        });
     }
+
+
 
 
     @Override
@@ -111,11 +120,7 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         mMap = googleMap;
 
         enableMyLocation();
-
-
         Intent intent = getIntent();
-//        intent.putExtra(Constants.LOCATION_COORDINATES_EXTRA,new LatLng(37.978966, 23.762810));
-//        intent.putExtra(Constants.SELLER_NAME,"Public");
   /*
         intent.putExtra(Constants.LOCATION_COORDINATES_EXTRA,new LatLng(Seller.getLat(), Seller.getLongt()));
         intent.putExtra(Constants.SELLER_NAME,seller.getName());
@@ -124,43 +129,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         sellersplace = intent.getParcelableExtra(Constants.LOCATION_COORDINATES_EXTRA);
         String sellerName = intent.getStringExtra(Constants.SELLER_NAME);
         mMap.addMarker(new MarkerOptions().position(sellersplace).title(sellerName));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sellersplace));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(sellersplace,15));
+        mMap.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
 
 
-        if(mylocation!=null&&sellersplace!=null) {
-            LatLng origin = mylocation;
-            LatLng dest = sellersplace;
-
-
-            // Getting URL to the Google Directions API
-            String url = getDirectionsUrl(origin, dest);
-
-            DirectionsFetcher directionsFetcher = new DirectionsFetcher(getBaseContext());
-
-            // Start downloading json data from Google Directions API
-            directionsFetcher.execute(url);
-
-
-
-        }
         infoText2.setText("Seller's name::" + sellerName);
-/*        //I need to take the shop's Lat Long by previous activity
-        LatLng shop = new LatLng(37, 23);
-        mMap.addMarker(new MarkerOptions().position(shop).title("Marker in somewhere rnadom"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(shop));
-        //find the loction by anddress--------------------------- instead the dummy loc
-        Intent intent = new Intent(this, FetchAddressIntentService.class);
-        intent.putExtra(Constants.RECEIVER, mResultReceiver);
-        intent.putExtra(Constants.FETCH_TYPE_EXTRA, fetchType);
-        if(fetchType == Constants.USE_ADDRESS_NAME) {
-            }
-
-        infoText2.setVisibility(View.INVISIBLE);
-        progressBar.setVisibility(View.VISIBLE);
-        Log.e(TAG, "Starting Service");
-        startService(intent);
-        //------------------------------*/
-
 
     }
 
@@ -172,22 +145,9 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
                 != PackageManager.PERMISSION_GRANTED) {
 
         } else if (mMap != null) {
-            // Access to the location has been granted to the app.
+
             mMap.setMyLocationEnabled(true);
 
-            Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
-
-            if (mLastLocation != null) {
-                Double latitude = mLastLocation.getLatitude();
-                Double longitude = mLastLocation.getLongitude();
-
-                mylocation = new LatLng(longitude, latitude);
-
-                Log.d(TAG, "your location is loc==" + mylocation);
-                infoText2.setText("your location is loc==" + mylocation);
-                Toast toast = Toast.makeText(getApplicationContext(), "i found your location" + mylocation, Toast.LENGTH_SHORT);
-                toast.show();
-            }
         }
     }
 
@@ -210,6 +170,8 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             LatLng origin = mylocation;
             LatLng dest = sellersplace;
 
+            mMap.addPolyline(new PolylineOptions().add(origin).add(dest).color(Color.MAGENTA));
+
             // Getting URL to the Google Directions API
             String url = getDirectionsUrl(origin, dest);
 
@@ -217,9 +179,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             // Start downloading json data from Google Directions API
             directionsFetcher.execute(url);
-
-
-
         }
         return true;
     }
@@ -237,27 +196,40 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         Location mLastLocation = LocationServices.FusedLocationApi.getLastLocation(
                 mGoogleApiClient);
+        if (mLastLocation != null) {
+            mylocation = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
+
+            Toast toast = Toast.makeText(getApplicationContext(), "i found your location" + mylocation, Toast.LENGTH_SHORT);
+            toast.show();
+        }
+
     }
 
     @Override
     public void onConnectionSuspended(int i) {
     }
 
-    public void giveDirections(View view){
+    public void giveDirections(){
+        Toast toast = Toast.makeText(getApplicationContext(), "giveDirections", Toast.LENGTH_SHORT);
+        toast.show();
+
         if(mylocation!=null&&sellersplace!=null) {
+
             LatLng origin = mylocation;
             LatLng dest = sellersplace;
+            mMap.addMarker(new MarkerOptions().position(origin).title("you are here"));
+            mMap.addPolyline(new PolylineOptions().add(origin).add(dest).color(Color.MAGENTA));
 
-            // Getting URL to the Google Directions API
             String url = getDirectionsUrl(origin, dest);
-
+            Toast toast2 = Toast.makeText(getApplicationContext(), "url "+url, Toast.LENGTH_SHORT);
+            toast2.show();
             DirectionsFetcher directionsFetcher = new DirectionsFetcher(getBaseContext());
-
-            // Start downloading json data from Google Directions API
+            Toast toast3 = Toast.makeText(getApplicationContext(), " directionsFetcher.execute(url)", Toast.LENGTH_SHORT);
+            toast3.show();
             directionsFetcher.execute(url);
-
-
-
+        }else{
+            Toast toast2 = Toast.makeText(getApplicationContext(), "unable to find directions" , Toast.LENGTH_SHORT);
+            toast2.show();
         }
     }
 
@@ -276,12 +248,11 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         // Building the parameters to the web service
         String parameters = str_origin + "&" + str_dest + "&" + sensor;
 
-//        // Output format
-//        String output = "json";
+
         /*https://maps.googleapis.com/maps/api/directions/json?origin=+37.978966,23.762810&destination=37.973296,23.773169&mode=walking&key=AIzaSyC-trwnGXpljEs184ueqTVDqQy8VfdVYBQ*/
 
         // Building the url to the web service
-        String url = "https://maps.googleapis.com/maps/api/directions/json?" + parameters;
+        String url ="https://maps.googleapis.com/maps/api/directions/json?" + parameters;
 
         return url;
     }
