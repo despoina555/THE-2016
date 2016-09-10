@@ -34,6 +34,7 @@ public class DisplayResults extends AppCompatActivity {
         TextView textView = new TextView(this);
         textView.setTextSize(40);
         textView.setText(message);
+        textView.setTextIsSelectable(true);
         Products prod;
         Sellers sel;
         ShoppingList shl;

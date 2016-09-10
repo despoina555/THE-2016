@@ -84,11 +84,7 @@ public class LoadSellersRest extends AsyncTask <String,Void,String>{
         ArrayList<Sellers> alsl= new ArrayList<Sellers>();
         Sellers sl;
         JSONObject jsonResponse;
-        String res = "Restmessage: "+result;
-        
-        ArrayList<Integer> temppdsel;
-        ArrayList<Float> temppdprice;
-        int myid = 0;
+        String distarg[] = maxdist.split(" ");
         try {
             JSONArray jsonMainNode = new JSONArray(result);
             for(int j=0 ; j<product.getSellerid().size() ; j++){
@@ -98,7 +94,7 @@ public class LoadSellersRest extends AsyncTask <String,Void,String>{
                         LatLng coord = new LatLng(Double.parseDouble(jsonResponse.getString("lat")), Double.parseDouble(jsonResponse.getString("long1")));
                         LatLng curcoord = new LatLng(loc.getLatitude(),loc.getLongitude());
                         double dist = SphericalUtil.computeDistanceBetween(coord, curcoord);
-                        if( dist < (Double.parseDouble(maxdist)*1000.0) || Double.parseDouble(maxdist) == -1){
+                        if( (((dist < (Double.parseDouble(distarg[1])*1000.0)) || Double.parseDouble(distarg[1]) == -1) && (distarg[0].equals("d"))) || (distarg[0].equals("t"))){
                             sl = new Sellers();
                             sl.setId(Integer.valueOf(jsonResponse.getString("sellerid")));
                             sl.setAddress(jsonResponse.getString("selleraddress"));
@@ -122,6 +118,12 @@ public class LoadSellersRest extends AsyncTask <String,Void,String>{
         } catch (JSONException ex) {
             Log.e("gr.uoa.hello","",ex);
         }
-        mAdapter.upDateEntries(alsl);
+        if(distarg[0].equals("d")){
+            mAdapter.upDateEntries(alsl);
+        }
+        else if(distarg[0].equals("t")){
+            LoadSellersDistanceRest lsdr = new LoadSellersDistanceRest(parent, mAdapter, loc, distarg[1], alsl);
+            lsdr.execute("https://maps.googleapis.com/maps/api/directions");
+        }
     }
 }
