@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import gr.uoa.di.R;
 
 /**
  *
@@ -72,7 +71,6 @@ public class LoadProductsRest extends AsyncTask <String,Void,String>{
         ArrayList<Products> alpd= new ArrayList<Products>();
         Products pd = null;
         JSONObject jsonResponse;
-        String res = "Restmessage: "+result;
         ArrayList<Integer> temppdsel;
         ArrayList<Float> temppdprice;
         int myid = 0;

@@ -6,29 +6,20 @@
 package gr.uoa.di.mainsellers;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.location.Location;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.maps.android.SphericalUtil;
-import gr.uoa.di.mainproducts.DisplayResults;
-import gr.uoa.di.modelproducts.Products;
 import gr.uoa.di.modelproducts.Sellers;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLEncoder;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 

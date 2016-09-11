@@ -7,16 +7,9 @@ package gr.uoa.di.mainsellers;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.location.Location;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.util.Log;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.maps.android.SphericalUtil;
-import gr.uoa.di.mainproducts.DisplayResults;
 import gr.uoa.di.mainproducts.MyActivity;
-import gr.uoa.di.modelproducts.Products;
-import gr.uoa.di.modelproducts.Sellers;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -24,11 +17,6 @@ import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Collections;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 /**
  *
@@ -86,48 +74,6 @@ public class SaveCommentRest extends AsyncTask <String,Void,String>{
     }
     
     protected void onPostExecute(String result) {
-        /*ArrayList<Sellers> alsl= new ArrayList<Sellers>();
-        Sellers sl;
-        JSONObject jsonResponse;*/
-        String res = "Restmessage: "+result;
-        /*
-        ArrayList<Integer> temppdsel;
-        ArrayList<Float> temppdprice;
-        int myid = 0;
-        try {
-            JSONArray jsonMainNode = new JSONArray(result);
-            for(int j=0 ; j<product.getSellerid().size() ; j++){
-                for(int i=0 ; i<jsonMainNode.length() ; i++){
-                    jsonResponse =((JSONObject)jsonMainNode.get(i));
-                    if(product.getSellerid().get(j) == Integer.valueOf(jsonResponse.getString("sellerid"))){
-                        LatLng coord = new LatLng(Double.parseDouble(jsonResponse.getString("lat")), Double.parseDouble(jsonResponse.getString("long1")));
-                        LatLng curcoord = new LatLng(loc.getLatitude(),loc.getLongitude());
-                        double dist = SphericalUtil.computeDistanceBetween(coord, curcoord);
-                        if( dist < (Double.parseDouble(maxdist)*1000.0) || Double.parseDouble(maxdist) == -1){
-                            sl = new Sellers();
-                            sl.setId(Integer.valueOf(jsonResponse.getString("sellerid")));
-                            sl.setAddress(jsonResponse.getString("selleraddress"));
-                            sl.setEmail(jsonResponse.getString("sellermail"));
-                            sl.setName(jsonResponse.getString("sellername"));
-                            sl.setPrice(product.getProdprice().get(j));
-                            sl.setLat(Float.valueOf(jsonResponse.getString("lat")));
-                            sl.setLongt(Float.valueOf(jsonResponse.getString("long1")));
-                            sl.setDist(dist);
-                            alsl.add(sl);
-                        }
-                    }
-                }
-            }
-            if("1".equals(order)){
-                Collections.sort(alsl, Sellers.SelPriceComparator);
-            }
-            else if("2".equals(order)){
-                Collections.sort(alsl, Sellers.SelDistComparator);
-            }
-        } catch (JSONException ex) {
-            Log.e("gr.uoa.hello","",ex);
-        }
-        mAdapter.upDateEntries(alsl);*/
         Intent intent = new Intent(parent, MyActivity.class);
         parent.startActivity(intent);
     }

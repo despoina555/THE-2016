@@ -5,7 +5,6 @@
  */
 package gr.uoa.di.mainsellers;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Rect;
@@ -18,7 +17,6 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 import gr.uoa.di.R;
-import gr.uoa.di.mainproducts.DisplayResults;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONException;
@@ -47,9 +45,6 @@ public class InsertRatingActivity extends AppCompatActivity {
         } catch (JSONException ex) {
             Logger.getLogger(InsertRatingActivity.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //intent = new Intent(this, DisplayResults.class);
-        //intent.putExtra("gr.uoa.di.RESULTMESSAGE", String.valueOf(sellerid));
-        //startActivity(intent);
     }
     
     public void submitcomment(View view){
@@ -65,7 +60,6 @@ public class InsertRatingActivity extends AppCompatActivity {
         String comtext = comedittext.getText().toString();
         JSONObject jsontogo = new JSONObject();
         try {
-            //jsontogo.put("comid", "2");
             jsontogo.put("comname", comname);
             jsontogo.put("comtext", comtext);
             jsontogo.put("prodname", prodname);

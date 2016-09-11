@@ -6,7 +6,6 @@
 package gr.uoa.di.mainsellers;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -15,7 +14,6 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.GoogleApiClient.ConnectionCallbacks;
@@ -23,12 +21,14 @@ import com.google.android.gms.common.api.GoogleApiClient.OnConnectionFailedListe
 import com.google.android.gms.location.LocationServices;
 import com.google.gson.Gson;
 import gr.uoa.di.R;
-import gr.uoa.di.mainproducts.DisplayResults;
-import gr.uoa.di.mainproducts.MyActivity;
-import gr.uoa.di.mainproducts.SettingsActivity;
 import gr.uoa.di.modelproducts.Products;
-import gr.uoa.di.modelproducts.Sellers;
 import android.support.v4.content.ContextCompat;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import gr.uoa.di.mainlist.MyListActivity;
+import gr.uoa.di.mainproducts.SettingsActivity;
+import gr.uoa.di.mainproducts.ShowProductsActivity;
 
 /**
  *
@@ -123,5 +123,33 @@ public class DisplaySellersActivity extends AppCompatActivity implements Connect
     @Override
     public void onConnectionFailed(com.google.android.gms.common.ConnectionResult cr) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.mainmenu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+    // Handle item selection
+    switch (item.getItemId()) {
+        case R.id.mylist:
+            Intent intent = new Intent(this, MyListActivity.class);
+            startActivity(intent);
+            return true;
+        case R.id.allprod:
+            intent = new Intent(this, ShowProductsActivity.class);
+            startActivity(intent);
+            return true;
+        case R.id.settings:
+            intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
+            return true;
+        default:
+            return super.onOptionsItemSelected(item);
+        }
     }
 }

@@ -7,7 +7,6 @@ package gr.uoa.di.mainlist;
 
 import gr.uoa.di.modelproducts.Products;
 import android.content.Context;
-import static android.content.Context.MODE_APPEND;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,13 +19,8 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import java.util.ArrayList;
 import gr.uoa.di.R;
-import gr.uoa.di.mainproducts.DisplayResults;
 import gr.uoa.di.mainsellers.DisplaySellersActivity;
 import gr.uoa.di.modelproducts.ShoppingList;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 /**
  *
  * @author mark9

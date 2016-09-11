@@ -100,7 +100,7 @@ public class Sellers {
 	public int compare(Sellers s1, Sellers s2) {
 	   Float SelPrice1 = s1.getPrice();
 	   Float SelPrice2 = s2.getPrice();
-	   //ascending order
+
 	   return SelPrice1.compareTo(SelPrice2);
     }};
     
@@ -110,7 +110,7 @@ public class Sellers {
 	public int compare(Sellers s1, Sellers s2) {
 	   double SelDist1 = s1.getDist();
 	   double SelDist2 = s2.getDist();
-	   //ascending order
+
 	   return Double.compare(SelDist1, SelDist2);
     }};
 }

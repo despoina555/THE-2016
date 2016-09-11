@@ -19,7 +19,6 @@ import java.util.ArrayList;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import gr.uoa.di.R;
 import gr.uoa.di.modelproducts.ShoppingList;
 
 /**
@@ -29,7 +28,7 @@ import gr.uoa.di.modelproducts.ShoppingList;
 class LoadListRest extends AsyncTask <String,Void,String>{
     private final Activity parent;
     private final CustomListAdapter mAdapter;
-    private String file = "mylist.txt";
+    private final String file = "mylist.txt";
     
     public LoadListRest(Activity parent, CustomListAdapter adapter){
         this.parent=parent;
@@ -74,7 +73,6 @@ class LoadListRest extends AsyncTask <String,Void,String>{
         ArrayList<Products> alpd= new ArrayList<Products>();
         Products pd = null;
         JSONObject jsonResponse;
-        String res = "Restmessage: "+result;
         ArrayList<Integer> temppdsel;
         ArrayList<Float> temppdprice;
         ShoppingList shl = new ShoppingList();

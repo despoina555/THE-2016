@@ -1,7 +1,6 @@
 package gr.uoa.di.mainproducts;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -17,35 +16,6 @@ import gr.uoa.di.mainlist.MyListActivity;
 
 
 public class MyActivity extends AppCompatActivity {
-
-    public final static String EXTRA_MESSAGE = "gr.uoa.di.MESSAGE";
-    public final static String RESULT_MESSAGE = "gr.uoa.di.RESULTMESSAGE";
-    private String file = "mylist.txt";
-    
-//    //For displaying what user just wrote (as in tutorials)
-//    public void sendMessage(View view) {
-//        //Intent intent = new Intent(this, DisplayMessageActivity.class);
-//        EditText editText = (EditText) findViewById(R.id.edit_message);
-//        String message = editText.getText().toString();
-//        //intent.putExtra(EXTRA_MESSAGE, message);
-//        //startActivity(intent);
-//        try {
-//               FileOutputStream fOut = openFileOutput(file,Context.MODE_PRIVATE);
-//               fOut.write(message.getBytes());
-//               fOut.close();
-//               Toast.makeText(getBaseContext(),"file saved",Toast.LENGTH_SHORT).show();
-//            }
-//            catch (Exception e) {
-//
-//               e.printStackTrace();
-//            }
-//    }
-
-
-//    //For calling Restful service and displaying result with the next activity
-//    public void searchMessage(View view){
-//        new RestThread(this).execute("http://192.168.1.2:8080/CustomerDB/webresources/entities.customer/bubbles");
-//    }
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +39,6 @@ public class MyActivity extends AppCompatActivity {
         return true;
     }
 
-    //Just for testing the menu. Does nothing for now
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     // Handle item selection

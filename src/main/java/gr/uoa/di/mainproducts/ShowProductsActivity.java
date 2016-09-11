@@ -38,7 +38,6 @@ public class ShowProductsActivity extends AppCompatActivity {
         return true;
     }
 
-    //Just for testing the menu. Does nothing for now
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
     // Handle item selection
@@ -52,6 +51,8 @@ public class ShowProductsActivity extends AppCompatActivity {
             startActivity(intent);
             return true;
         case R.id.settings:
+            intent = new Intent(this, SettingsActivity.class);
+            startActivity(intent);
             return true;
         default:
             return super.onOptionsItemSelected(item);

@@ -7,16 +7,11 @@ import android.content.Context;
 import static android.content.Context.MODE_APPEND;
 import static android.content.Context.MODE_PRIVATE;
 import android.util.Log;
-import android.widget.Toast;
-import gr.uoa.di.mainproducts.CustomProductsAdapter;
-import gr.uoa.di.modelproducts.Products;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *

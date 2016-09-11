@@ -10,7 +10,6 @@ import java.util.ArrayList;
  * @author mark9
  */
 public class Products {
-// Fields are not correct yet
     private int prodid;
     private int prodnum;
     private String prodname;

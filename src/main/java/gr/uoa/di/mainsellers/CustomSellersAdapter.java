@@ -7,17 +7,14 @@ package gr.uoa.di.mainsellers;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import gr.uoa.di.R;
 import gr.uoa.di.modelproducts.Sellers;
-import gr.uoa.di.modelproducts.ShoppingList;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -29,8 +26,8 @@ import org.json.JSONObject;
  * @author mark9
  */
 public class CustomSellersAdapter extends BaseAdapter{
-    private Context mContext;
-    private LayoutInflater mLayoutInflater;
+    private final Context mContext;
+    private final LayoutInflater mLayoutInflater;
     private ArrayList<Sellers> mSellers = new ArrayList<Sellers>();
     
     public CustomSellersAdapter(Context context){
