@@ -23,18 +23,12 @@
         android:layout_below="@id/infoText"
         android:layout_gravity="center" />
 
-    <TextView
-        android:id="@+id/infoText2"
-        android:layout_width="match_parent"
-        android:layout_height="72dp"
-        android:textStyle="bold"
-        android:layout_gravity="center_horizontal|bottom" />
-
     <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="57dp"
+        android:layout_height="54dp"
         android:id="@+id/directionsButton"
         android:contentDescription="Directions"
+        android:onClick="sendRequest"
         android:src="@drawable/directions"
         android:layout_gravity="right|top" />
 
@@ -42,10 +36,25 @@
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/infoText2"
+        android:layout_below="@id/infoText"
         android:layout_centerHorizontal="true"
         android:visibility="invisible"
         android:layout_gravity="center_horizontal|top" />
+
+    <TextView
+        android:id="@+id/duration"
+        android:layout_width="82dp"
+        android:layout_height="49dp"
+        android:text="duration::"
+        android:layout_gravity="left|bottom" />
+
+    <TextView
+        android:id="@+id/distance"
+        android:layout_width="75dp"
+        android:layout_height="50dp"
+        android:textStyle="bold"
+        android:text="distance::"
+        android:layout_gravity="right|bottom" />
 
 
 </FrameLayout>
