@@ -28,7 +28,6 @@
         android:layout_height="54dp"
         android:id="@+id/directionsButton"
         android:contentDescription="Directions"
-        android:onClick="sendRequest"
         android:src="@drawable/directions"
         android:layout_gravity="right|top" />
 
