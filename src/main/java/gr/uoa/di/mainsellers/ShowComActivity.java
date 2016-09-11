@@ -14,6 +14,7 @@ import android.view.MenuItem;
 import android.widget.ListView;
 import android.widget.TextView;
 import gr.uoa.di.R;
+import gr.uoa.di.google.maps.Constants;
 import gr.uoa.di.mainlist.MyListActivity;
 import gr.uoa.di.mainproducts.SettingsActivity;
 import gr.uoa.di.mainproducts.ShowProductsActivity;
@@ -45,7 +46,7 @@ public class ShowComActivity extends AppCompatActivity{
             listView.setEmptyView(findViewById(R.id.emptycommentsview));
             listView.setAdapter(adapter);
             LoadCommentsRest lcr = new LoadCommentsRest(this, adapter, selid);
-            lcr.execute("http://192.168.1.6:8080/ListDB/webresources/entities.comments/bubbles");
+            lcr.execute(Constants.LOAD_COMMENTS_API);
             
         } catch (JSONException ex) {
             Logger.getLogger(ShowComActivity.class.getName()).log(Level.SEVERE, null, ex);

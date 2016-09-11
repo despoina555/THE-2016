@@ -8,6 +8,7 @@ package gr.uoa.di.mainsellers;
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.util.Log;
+import gr.uoa.di.google.maps.Constants;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -73,7 +74,7 @@ public class CountCommentRest extends AsyncTask <String,Void,String>{
             comid++;
             jsonsend.put("comid", String.valueOf(comid));
             SaveCommentRest scr = new SaveCommentRest(parent, jsonsend.toString());
-            scr.execute("http://192.168.1.6:8080/ListDB/webresources/entities.comments/testpost");
+            scr.execute(Constants.POST_COMMENTS_API);
         } catch (JSONException ex) {
             Logger.getLogger(CountCommentRest.class.getName()).log(Level.SEVERE, null, ex);
         }

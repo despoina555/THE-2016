@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.Toast;
 import gr.uoa.di.R;
+import gr.uoa.di.google.maps.Constants;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.json.JSONException;
@@ -67,7 +68,7 @@ public class InsertRatingActivity extends AppCompatActivity {
             jsontogo.put("rating", rating);
             jsontogo.put("sellerid", sellerid);
             CountCommentRest scr = new CountCommentRest(this, jsontogo.toString());
-            scr.execute("http://192.168.1.6:8080/ListDB/webresources/entities.comments/count");
+            scr.execute(Constants.COUNT_COMMENTS_API);
             Toast.makeText(this, "Your rating has been added.", Toast.LENGTH_LONG).show();
         } catch (JSONException ex) {
             Logger.getLogger(InsertRatingActivity.class.getName()).log(Level.SEVERE, null, ex);

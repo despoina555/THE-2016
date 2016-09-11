@@ -9,6 +9,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ListView;
 import gr.uoa.di.R;
+import gr.uoa.di.google.maps.Constants;
 import gr.uoa.di.mainlist.MyListActivity;
 
 /**
@@ -27,7 +28,7 @@ public class ShowProductsActivity extends AppCompatActivity {
         ListView listView = (ListView) findViewById(R.id.show_products_list);
         listView.setAdapter(adapter);
         LoadProductsRest lpr = new LoadProductsRest(this, adapter);
-        lpr.execute("http://192.168.1.6:8080/ListDB/webresources/entities.product/bubbles");
+        lpr.execute(Constants.LOAD_PRODUCTS_API);
         
     }
 

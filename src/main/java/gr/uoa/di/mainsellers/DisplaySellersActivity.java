@@ -26,6 +26,7 @@ import android.support.v4.content.ContextCompat;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import gr.uoa.di.google.maps.Constants;
 import gr.uoa.di.mainlist.MyListActivity;
 import gr.uoa.di.mainproducts.SettingsActivity;
 import gr.uoa.di.mainproducts.ShowProductsActivity;
@@ -111,7 +112,7 @@ public class DisplaySellersActivity extends AppCompatActivity implements Connect
             String dist = sharedPref.getString("distanceStore", "");
             String order = sharedPref.getString("storeOrder", "");
             LoadSellersRest lsr = new LoadSellersRest(this, adapter, proddisp, mLastLocation, dist, order);
-           lsr.execute("http://192.168.1.6:8080/ListDB/webresources/entities.sellers/bubbles");
+           lsr.execute(Constants.LOAD_SELLERS_API);
         }
     }
 

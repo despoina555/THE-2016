@@ -11,5 +11,14 @@ public final class Constants {
 
     public static final String  SELLER_NAME= PACKAGE_NAME +".SELLER_NAME";
 
-
+    public static final String LOAD_PRODUCTS_API = "http://192.168.1.6:8080/ListDB/webresources/entities.product/bubbles";
+    
+    public static final String LOAD_SELLERS_API = "http://192.168.1.6:8080/ListDB/webresources/entities.sellers/bubbles";
+    
+    public static final String LOAD_COMMENTS_API = "http://192.168.1.6:8080/ListDB/webresources/entities.comments/bubbles";
+    
+    public static final String POST_COMMENTS_API = "http://192.168.1.6:8080/ListDB/webresources/entities.comments/testpost";
+    
+    public static final String COUNT_COMMENTS_API = "http://192.168.1.6:8080/ListDB/webresources/entities.comments/count";
+    
 }
