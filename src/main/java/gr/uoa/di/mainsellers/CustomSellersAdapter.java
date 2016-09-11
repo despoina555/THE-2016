@@ -13,7 +13,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.google.android.gms.maps.model.LatLng;
+
 import gr.uoa.di.R;
+import gr.uoa.di.google.maps.Constants;
+import gr.uoa.di.google.maps.MapsActivity;
 import gr.uoa.di.modelproducts.Sellers;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -71,6 +76,10 @@ public class CustomSellersAdapter extends BaseAdapter{
             @Override
             public void onClick(View v) {
 
+                Intent intent = new Intent(mContext, MapsActivity.class);
+                intent.putExtra(Constants.LOCATION_COORDINATES_EXTRA,new LatLng(mSellers.get(position).getLat(), mSellers.get(position).getLongt()));
+                intent.putExtra(Constants.SELLER_NAME,mSellers.get(position).getName());
+                mContext.startActivity(intent);
             }
         }); 
        final  Button boughtbut = (Button) sellerView.findViewById(R.id.boughtbutton);
