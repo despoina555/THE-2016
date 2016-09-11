@@ -88,8 +88,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         directionsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast toast = Toast.makeText(getApplicationContext(), "begins to search for directios", Toast.LENGTH_SHORT);
-                toast.show();
                 sendRequest();
             }
         });
@@ -97,9 +95,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     private void sendRequest() {
-
-        Toast toast = Toast.makeText(getApplicationContext(), "sendRequest", Toast.LENGTH_SHORT);
-        toast.show();
 
 
         String origin = mylocation.latitude + "," + mylocation.longitude;
@@ -114,8 +109,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
 
         try {
-            Toast toast3 = Toast.makeText(getApplicationContext(), " DirectionFinder(this, origin, destination).execute()", Toast.LENGTH_LONG);
-            toast3.show();
             new DirectionsFinder(this, origin, destination).execute();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
@@ -199,8 +192,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
 
             polylinePaths.add(mMap.addPolyline(polylineOptions));
 
-            Toast toast = Toast.makeText(getApplicationContext(), "directions given successfully", Toast.LENGTH_SHORT);
-            toast.show();
         }
     }
 
@@ -218,8 +209,6 @@ public class MapsActivity extends AppCompatActivity implements OnMapReadyCallbac
             directionsButton.setEnabled(true);
             originMarkers.add(  mMap.addMarker(new MarkerOptions().position(mylocation).title("your place")));
 
-            Toast toast = Toast.makeText(getApplicationContext(), "i found your location" + mylocation, Toast.LENGTH_SHORT);
-            toast.show();
         }
 
     }

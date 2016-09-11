@@ -55,17 +55,6 @@ public class MyActivity extends AppCompatActivity {
             intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
             return true;
-        case R.id.maps:
-           /* intent = new Intent(android.content.Ic
-           ntent.ACTION_VIEW,
-            Uri.parse("http://maps.google.com/maps?daddr=37.93295,23.70155"));
-            startActivity(intent);
-            return true;*/
-            Intent intentMap = new Intent(this,gr.uoa.di.google.maps.MapsActivity.class);
-            intentMap.putExtra(Constants.LOCATION_COORDINATES_EXTRA,new LatLng(37.978966, 23.762810));
-            intentMap.putExtra(Constants.SELLER_NAME,"Public");
-            startActivity(intentMap);
-            return true;
         default:
             return super.onOptionsItemSelected(item);
         }
